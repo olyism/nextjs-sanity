@@ -5,7 +5,7 @@
   "main": "package.json",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next",
     "start": "next start",
     "build": "next build",
     "lint": "next lint",
