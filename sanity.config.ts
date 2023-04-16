@@ -8,10 +8,10 @@ const devOnlyPlugins = [getStartedPlugin()]
 
 export default defineConfig({
   name: 'default',
-  title: 'pink-dolphin',
-
-  projectId: 'ow0pvdfx',
-  dataset: 'production',
+  title: 'DPL',
+  basePath: '/studio',
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
 
   plugins: [deskTool(), visionTool(), ...(isDev ? devOnlyPlugins : [])],
 
