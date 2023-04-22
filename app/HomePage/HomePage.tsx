@@ -1,5 +1,5 @@
 import Link from "next/link"
-import client from "../lib/client"
+import client from "@/lib/client"
 
 const HomePage = async () => {
   const data = await getData();
