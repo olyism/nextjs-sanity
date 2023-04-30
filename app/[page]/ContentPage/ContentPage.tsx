@@ -24,11 +24,11 @@ const ContentPage = async ({params}: Props) => {
 export default ContentPage
 
 async function getPageData(page: string) {
-  const data = await client.fetch(`
+  const pageData = await client.fetch(`
     *[_type == "page" && slug == "${page}"]{
       name, title, content
-    }
+    }[0]
   `)
 
-  return data[0]
+  return pageData
 }

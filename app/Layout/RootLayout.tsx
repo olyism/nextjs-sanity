@@ -39,14 +39,14 @@ const RootLayout = async ({children}: {children: ReactNode}) => {
 export default RootLayout
 
 async function getSettingsData() {
-  const data = await client.fetch(`
+  const settingsData = await client.fetch(`
     *[_type == "settings"]{
       title, description,
       nav[]->{
         _id, name, slug
       }
-    }
+    }[0]
   `)
 
-  return data[0]
+  return settingsData
 }
