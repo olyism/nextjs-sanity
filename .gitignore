@@ -55,6 +55,7 @@ test/traces
 **/.idea
 **/.#*
 .nvmrc
+.vscode
 
 # examples
 examples/**/out
