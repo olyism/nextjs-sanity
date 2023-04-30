@@ -1,13 +1,22 @@
-"use client" 
+'use client'
 
-import { AiOutlineMenu } from "react-icons/ai"
+import {FC} from 'react'
+import Link from 'next/link'
+import {AiOutlineMenu} from 'react-icons/ai'
+import Logo from './components/Logo'
 
-const Header = ({ onClickMobileMenu }) => {
+interface Props {
+  onClickMobileMenu: () => {}
+}
+
+const Header: FC<Props> = ({onClickMobileMenu}) => {
   return (
     <header className="flex justify-between items-center px-4 py-2">
-      <div>LOGO</div>
+      <Link href="/">
+        <Logo />
+      </Link>
       <button aria-hidden onClick={onClickMobileMenu} className="md:hidden">
-        <AiOutlineMenu className="h-6 w-6"/>
+        <AiOutlineMenu className="h-6 w-6" />
       </button>
       <nav className="hidden md:block">
         <ul className="flex gap-4">
