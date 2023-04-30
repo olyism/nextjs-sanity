@@ -21,13 +21,13 @@ export async function generateMetadata() {
 }
 
 const RootLayout = async ({children}: {children: ReactNode}) => {
-  const {nav} = await settingsData
+  const {nav: navData} = await settingsData
 
   return (
     <html lang="en">
       <body className={`bg-cobalt-100 ${openSans.variable}`}>
         <div className="mx-auto max-w-screen-2xl min-h-screen flex flex-col bg-white drop-shadow-2xl">
-          <Navigation navData={nav} />
+          <Navigation navData={navData} />
           <main className="grow">{children}</main>
           <Footer />
         </div>
