@@ -1,34 +1,33 @@
-'use client'
-
-import {useState} from 'react'
+import {ReactNode} from 'react'
 import {Open_Sans} from 'next/font/google'
-import './globals.css'
-import Header from './components/Header'
+import client from '@/lib/client'
 import Footer from './components/Footer'
-import MobileMenu from './components/MobileMenu'
+import Navigation from './components/Navigation'
+import './globals.css'
 
 const openSans = Open_Sans({
   subsets: ['latin'],
   variable: '--open-sans-font',
 })
 
-export const metadata = {
-  title: 'DPL Group',
-  description: '',
+const settingsData = getSettingsData()
+
+export async function generateMetadata() {
+  const {title, description} = await settingsData
+  return {
+    title,
+    description,
+  }
 }
 
-const RootLayout = ({children}: {children: React.ReactNode}) => {
-  const [isMobileMenuShown, setIsMobileMenuShown] = useState(false)
+const RootLayout = async ({children}: {children: ReactNode}) => {
+  const {nav} = await settingsData
 
   return (
     <html lang="en">
       <body className={`bg-cobalt-100 ${openSans.variable}`}>
         <div className="mx-auto max-w-screen-2xl min-h-screen flex flex-col bg-white drop-shadow-2xl">
-          <Header
-            isMobileMenuShown={isMobileMenuShown}
-            onClickMobileMenu={() => setIsMobileMenuShown(!isMobileMenuShown)}
-          />
-          <MobileMenu isMobileMenuShown={isMobileMenuShown} />
+          <Navigation navData={nav} />
           <main className="grow">{children}</main>
           <Footer />
         </div>
@@ -38,3 +37,16 @@ const RootLayout = ({children}: {children: React.ReactNode}) => {
 }
 
 export default RootLayout
+
+async function getSettingsData() {
+  const data = await client.fetch(`
+    *[_type == "settings"]{
+      title, description,
+      nav[]->{
+        _id, name, slug
+      }
+    }
+  `)
+
+  return data[0]
+}

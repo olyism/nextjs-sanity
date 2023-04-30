@@ -1,20 +1,22 @@
-'use client'
-
 import {FC} from 'react'
 import Link from 'next/link'
-import navLinks from '@/app/Layout/navLinks'
+import Nav, {NavItem} from '@/types/Nav'
 
-const NavLinks: FC = () => (
+interface Props {
+  navData?: Nav
+}
+
+const HeaderLinks: FC<Props> = ({navData = []}) => (
   <nav className="hidden md:block">
     <ul className="flex">
-      {navLinks.map((navLink: {name: string; href: string}) => {
-        const {name, href} = navLink
+      {navData.map((navItem: NavItem) => {
+        const {_id, name, slug} = navItem
 
         return (
-          <li key={name}>
+          <li key={_id}>
             <Link
               className="px-4 py-3 text-sm text-template rounded font-semibold hover:bg-cobalt-50"
-              href={href}
+              href={`/${slug}`}
             >
               {name}
             </Link>
@@ -25,4 +27,4 @@ const NavLinks: FC = () => (
   </nav>
 )
 
-export default NavLinks
+export default HeaderLinks

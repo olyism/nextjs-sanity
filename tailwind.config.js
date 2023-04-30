@@ -33,5 +33,6 @@ module.exports = {
     },
     extend: {},
   },
+  safelist: ['text-white', 'text-cobalt'],
   plugins: [],
 }
