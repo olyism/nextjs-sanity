@@ -1,7 +1,8 @@
 'use client'
 
-import {type FC, useState} from 'react'
+import {type FC, useState, useEffect} from 'react'
 import Link from 'next/link'
+import {usePathname} from 'next/navigation'
 import {HiBars2, HiXMark} from 'react-icons/hi2'
 import type Nav from '@/types/Nav'
 import Container from '@/components/Container'
@@ -15,6 +16,11 @@ interface Props {
 
 const Navigation: FC<Props> = ({navData = []}) => {
   const [isMobileMenuShown, setIsMobileMenuShown] = useState(false)
+  const pathname = usePathname()
+
+  useEffect(() => {
+    setIsMobileMenuShown(false)
+  }, [pathname])
 
   return (
     <>
