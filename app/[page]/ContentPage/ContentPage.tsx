@@ -1,5 +1,6 @@
-import { PortableText } from '@portabletext/react'
-import client from "lib/client"
+import {PortableText} from '@portabletext/react'
+import client from 'lib/client'
+import Container from '@/components/Container'
 
 interface Props {
   params: {
@@ -7,21 +8,27 @@ interface Props {
   }
 }
 
-const ContentPage = async ({ params }: Props) => {
-  const data = await getData(params.page)
+const ContentPage = async ({params}: Props) => {
+  const pageData = await getPageData(params.page)
 
   return (
-    <div>
-      <h1>{data[0].name}</h1>
-      <PortableText value={data[0].content} />
-    </div>
+    <Container>
+      <article className="prose">
+        <h1>{pageData?.title || pageData?.name}</h1>
+        <PortableText value={pageData?.content} />
+      </article>
+    </Container>
   )
 }
 
-export default ContentPage;
+export default ContentPage
 
-async function getData(page: string) {
-  const data = await client.fetch(`*[_type == "page" && slug == "${page}"]`)
+async function getPageData(page: string) {
+  const data = await client.fetch(`
+    *[_type == "page" && slug == "${page}"]{
+      name, title, content
+    }
+  `)
 
-  return data;
+  return data[0]
 }
