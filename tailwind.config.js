@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
@@ -21,6 +24,8 @@ module.exports = {
         950: '#00205F',
         DEFAULT: '#003AAC',
       },
+      template: colors.slate['900'],
+      icon: colors.slate['900'],
     },
     fontFamily: {
       display: ['var(--open-sans-font)'],

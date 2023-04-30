@@ -2,29 +2,25 @@
 
 import {FC} from 'react'
 import Link from 'next/link'
-import {AiOutlineMenu} from 'react-icons/ai'
+import {HiBars2, HiXMark} from 'react-icons/hi2'
 import Logo from './components/Logo'
+import NavLinks from './components/NavLinks'
 
 interface Props {
-  onClickMobileMenu: () => {}
+  isMobileMenuShown: boolean
+  onClickMobileMenu: () => void
 }
 
-const Header: FC<Props> = ({onClickMobileMenu}) => {
+const Header: FC<Props> = ({isMobileMenuShown, onClickMobileMenu}) => {
   return (
     <header className="flex justify-between items-center px-4 py-2">
       <Link href="/">
         <Logo />
       </Link>
       <button aria-hidden onClick={onClickMobileMenu} className="md:hidden">
-        <AiOutlineMenu className="h-6 w-6" />
+        {isMobileMenuShown ? <HiXMark className="h-6 w-6" /> : <HiBars2 className="h-6 w-6" />}
       </button>
-      <nav className="hidden md:block">
-        <ul className="flex gap-4">
-          <li>About us</li>
-          <li>Case study</li>
-          <li>Contact us</li>
-        </ul>
-      </nav>
+      <NavLinks />
     </header>
   )
 }

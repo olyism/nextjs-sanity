@@ -23,8 +23,11 @@ const RootLayout = ({children}: {children: React.ReactNode}) => {
   return (
     <html lang="en">
       <body className={`min-h-screen flex flex-col ${openSans.variable}`}>
-        <Header onClickMobileMenu={() => setIsMobileMenuShown(!isMobileMenuShown)} />
-        {isMobileMenuShown && <MobileMenu />}
+        <Header
+          isMobileMenuShown={isMobileMenuShown}
+          onClickMobileMenu={() => setIsMobileMenuShown(!isMobileMenuShown)}
+        />
+        <MobileMenu isMobileMenuShown={isMobileMenuShown} />
         {children}
         <div className="mt-auto">
           <Footer />
