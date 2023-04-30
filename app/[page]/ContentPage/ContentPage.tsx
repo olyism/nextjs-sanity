@@ -10,14 +10,23 @@ interface Props {
 
 const ContentPage = async ({params}: Props) => {
   const pageData = await getPageData(params.page)
+  const heading = pageData?.title || pageData?.name
 
   return (
-    <Container>
-      <article className="prose pb-12">
-        <h1>{pageData?.title || pageData?.name}</h1>
-        <PortableText value={pageData?.content} />
-      </article>
-    </Container>
+    <article>
+      {heading && (
+        <header className="pb-8 pt-24 bg-cobalt">
+          <Container>
+            <h1 className="font-display font-bold text-5xl text-white">{heading}</h1>
+          </Container>
+        </header>
+      )}
+      <Container>
+        <div className="prose mt-8">
+          <PortableText value={pageData?.content} />
+        </div>
+      </Container>
+    </article>
   )
 }
 

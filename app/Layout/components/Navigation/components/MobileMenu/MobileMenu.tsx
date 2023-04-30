@@ -5,20 +5,21 @@ import NavLink from './components/NavLink'
 
 interface Props {
   navData?: Nav
+  currentPath?: string | null
 }
 
-const MobileMenu: FC<Props> = ({navData = []}) => (
+const MobileMenu: FC<Props> = ({navData = [], currentPath = undefined}) => (
   <nav aria-hidden className={cn('bg-cobalt', 'px-2', 'py-2', 'md:hidden')}>
     <ul>
       <li>
-        <NavLink name="Home" href="/" />
+        <NavLink name="Home" href="/" currentPath={currentPath} />
       </li>
       {navData.map((navItem: NavItem) => {
         const {_id, name, slug} = navItem
 
         return (
           <li key={_id}>
-            <NavLink name={name} href={slug} />
+            <NavLink name={name} href={slug} currentPath={currentPath} />
           </li>
         )
       })}

@@ -24,7 +24,7 @@ const Navigation: FC<Props> = ({navData = []}) => {
 
   return (
     <>
-      <header>
+      <header className="bg-white drop-shadow-sm">
         <Container>
           <div className="flex justify-between items-center py-2">
             <Link href="/">
@@ -41,11 +41,11 @@ const Navigation: FC<Props> = ({navData = []}) => {
                 <HiBars2 className="h-6 w-6" />
               )}
             </button>
-            <HeaderLinks navData={navData} />
+            <HeaderLinks navData={navData} currentPath={pathname} />
           </div>
         </Container>
       </header>
-      {isMobileMenuShown && <MobileMenu navData={navData} />}
+      {isMobileMenuShown && <MobileMenu navData={navData} currentPath={pathname} />}
     </>
   )
 }

@@ -6,7 +6,7 @@ const Footer: FC = () => {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="py-10 bg-cobalt text-cobalt-200">
+    <footer className="mt-20 py-10 bg-cobalt text-cobalt-200">
       <Container>
         <div className="flex gap-4">
           <span className="mr-auto">&copy; {year} DPL Group</span>
