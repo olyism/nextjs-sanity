@@ -24,5 +24,17 @@ export default {
         },
       ],
     },
+    {
+      name: 'terms',
+      title: 'Terms and conditions',
+      type: 'array',
+      of: [{type: 'block'}],
+    },
+    {
+      name: 'privacy',
+      title: 'Privacy policy',
+      type: 'array',
+      of: [{type: 'block'}],
+    },
   ],
 }

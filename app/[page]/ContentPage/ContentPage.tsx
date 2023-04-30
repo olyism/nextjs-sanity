@@ -1,5 +1,5 @@
 import {PortableText} from '@portabletext/react'
-import client from 'lib/client'
+import getPageData from './getPageData'
 import Container from '@/components/Container'
 
 interface Props {
@@ -13,7 +13,7 @@ const ContentPage = async ({params}: Props) => {
 
   return (
     <Container>
-      <article className="prose">
+      <article className="prose pb-12">
         <h1>{pageData?.title || pageData?.name}</h1>
         <PortableText value={pageData?.content} />
       </article>
@@ -22,13 +22,3 @@ const ContentPage = async ({params}: Props) => {
 }
 
 export default ContentPage
-
-async function getPageData(page: string) {
-  const pageData = await client.fetch(`
-    *[_type == "page" && slug == "${page}"]{
-      name, title, content
-    }[0]
-  `)
-
-  return pageData
-}
