@@ -1,15 +1,16 @@
-"use client"
+'use client'
 
-import { AiOutlineCopyrightCircle } from 'react-icons/ai'
+import {FC} from 'react'
+import {AiOutlineCopyrightCircle} from 'react-icons/ai'
 
-const Footer = () => {
+const Footer: FC = () => {
   const year = new Date().getFullYear()
   return (
-    <div className="flex items-center gap-1">
-      <AiOutlineCopyrightCircle className="h-4 w-4"/>
+    <footer className="flex items-center gap-1">
+      <AiOutlineCopyrightCircle className="h-4 w-4" />
       <p>{year}</p>
       <p>DPL Group</p>
-    </div>
+    </footer>
   )
 }
 

@@ -22,14 +22,14 @@ const RootLayout = ({children}: {children: React.ReactNode}) => {
 
   return (
     <html lang="en">
-      <body className={`min-h-screen flex flex-col ${openSans.variable}`}>
-        <Header
-          isMobileMenuShown={isMobileMenuShown}
-          onClickMobileMenu={() => setIsMobileMenuShown(!isMobileMenuShown)}
-        />
-        <MobileMenu isMobileMenuShown={isMobileMenuShown} />
-        {children}
-        <div className="mt-auto">
+      <body className={`bg-cobalt-100 ${openSans.variable}`}>
+        <div className="mx-auto max-w-screen-2xl min-h-screen flex flex-col bg-white drop-shadow-2xl">
+          <Header
+            isMobileMenuShown={isMobileMenuShown}
+            onClickMobileMenu={() => setIsMobileMenuShown(!isMobileMenuShown)}
+          />
+          <MobileMenu isMobileMenuShown={isMobileMenuShown} />
+          <main className="grow">{children}</main>
           <Footer />
         </div>
       </body>

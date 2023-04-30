@@ -24,6 +24,7 @@ module.exports = {
         950: '#00205F',
         DEFAULT: '#003AAC',
       },
+      white: '#FFFFFF',
       template: colors.slate['900'],
       icon: colors.slate['900'],
     },
