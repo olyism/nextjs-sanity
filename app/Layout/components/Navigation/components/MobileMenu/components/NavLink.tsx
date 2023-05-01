@@ -11,7 +11,16 @@ interface Props {
 const NavLink: FC<Props> = ({name, href, currentPath = undefined}) => (
   <Link
     className={cn(
-      ['px-2', 'py-3', 'text-cobalt-50', 'text-center', 'font-semibold', 'rounded', 'block'],
+      [
+        'px-2',
+        'py-3',
+        'text-cobalt-50',
+        'text-center',
+        'font-display',
+        'font-semibold',
+        'rounded',
+        'block',
+      ],
       currentPath === href
         ? [
             'cursor-default',
@@ -21,7 +30,7 @@ const NavLink: FC<Props> = ({name, href, currentPath = undefined}) => (
             'decoration-cobalt-400',
             'decoration-2',
           ]
-        : 'hover:bg-cobalt-800'
+        : 'hover:bg-slate-700'
     )}
     href={href}
   >

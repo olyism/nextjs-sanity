@@ -43,7 +43,7 @@ const HeroBanner: FC<Props> = ({hero = undefined}) => {
             'sm:p-8',
             'sm:max-w-md',
             'bg-white',
-            'text-base',
+            'text-base-color',
             'rounded',
             'drop-shadow-md'
           )}

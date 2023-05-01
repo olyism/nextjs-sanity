@@ -25,6 +25,40 @@ export default {
       ],
     },
     {
+      name: 'cta',
+      title: 'Call to action',
+      type: 'object',
+      fields: [
+        {
+          name: 'buttonLabel',
+          title: 'Button label',
+          type: 'string',
+        },
+        {
+          name: 'goTo',
+          type: 'reference',
+          to: [{type: 'page'}],
+        },
+      ],
+    },
+    {
+      name: 'contact',
+      title: 'Contact details',
+      type: 'object',
+      fields: [
+        {
+          name: 'tel',
+          title: 'Phone number',
+          type: 'string',
+        },
+        {
+          name: 'email',
+          title: 'Email',
+          type: 'string',
+        },
+      ],
+    },
+    {
       name: 'terms',
       title: 'Terms and conditions',
       type: 'array',
