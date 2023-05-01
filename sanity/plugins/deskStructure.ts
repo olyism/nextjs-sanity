@@ -1,15 +1,10 @@
-// import S from '@sanity/desk-tool/structure-builder'
-
 const deskStructure = (S) =>
   S.list()
-    .title('Content management')
+    .title('Base')
     .items([
-      // ...S.documentTypeListItems().filter(
-      //   (item) => !['settings'].includes(item.getId('siteSettings'))
-      // ),
-      // S.listItem()
-      //   .title('Pages')
-      //   .child(S.document().schemaType('page'),
+      ...S.documentTypeListItems().filter(
+        (listItem) => !['settings', 'homepage'].includes(listItem.getId())
+      ),
       S.divider(),
       S.listItem()
         .title('Homepage')
