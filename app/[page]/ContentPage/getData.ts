@@ -16,11 +16,11 @@ const getGroq = (page: string) => {
   }
 }
 
-const getPageData = async (page: string) => {
+const getData = async (page: string) => {
   const groq = getGroq(page)
-  const pageData = await client.fetch(groq)
+  const data = await client.fetch(groq)
 
-  return pageData
+  return data
 }
 
-export default getPageData
+export default getData

@@ -27,6 +27,7 @@ module.exports = {
       white: '#FFFFFF',
       template: colors.slate['900'],
       icon: colors.slate['900'],
+      base: colors.slate['700'],
     },
     fontFamily: {
       display: ['var(--open-sans-font)'],

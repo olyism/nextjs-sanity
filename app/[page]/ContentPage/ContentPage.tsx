@@ -1,5 +1,5 @@
 import {PortableText} from '@portabletext/react'
-import getPageData from './getPageData'
+import getData from './getData'
 import Container from '@/components/Container'
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 }
 
 const ContentPage = async ({params}: Props) => {
-  const pageData = await getPageData(params.page)
+  const pageData = await getData(params.page)
   const heading = pageData?.title || pageData?.name
 
   return (

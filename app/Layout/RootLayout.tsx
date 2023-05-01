@@ -1,6 +1,6 @@
 import {ReactNode} from 'react'
 import {Open_Sans} from 'next/font/google'
-import client from '@/lib/client'
+import getSettingsData from './getSettingsData'
 import Footer from './components/Footer'
 import Navigation from './components/Navigation'
 import './globals.css'
@@ -37,16 +37,3 @@ const RootLayout = async ({children}: {children: ReactNode}) => {
 }
 
 export default RootLayout
-
-async function getSettingsData() {
-  const settingsData = await client.fetch(`
-    *[_type == "settings"]{
-      title, description,
-      nav[]->{
-        _id, name, slug
-      }
-    }[0]
-  `)
-
-  return settingsData
-}

@@ -1,10 +1,10 @@
-import Link from 'next/link'
-import type {FC} from 'react'
+import getData from './getData'
+import HeroBanner from './HeroBanner'
 
-const HomePage: FC = () => (
-  <article>
-    <h1 className="text-red-700">Hello there</h1>
-  </article>
-)
+const HomePage = async () => {
+  const data = await getData()
+
+  return <HeroBanner hero={data?.hero} />
+}
 
 export default HomePage
