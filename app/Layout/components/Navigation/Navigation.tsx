@@ -12,7 +12,7 @@ import MobileMenu from './components/MobileMenu'
 import HeaderLinks from './components/HeaderLinks'
 
 interface Props {
-  navData: Nav | null
+  navData?: Nav | null
   cta: CallToAction
   tel: string | null
 }

@@ -6,7 +6,7 @@ import Button, {ButtonType, ButtonDisplay} from '@/components/Button'
 import NavLink from './components/NavLink'
 
 interface Props {
-  navData?: Nav
+  navData?: Nav | null
   cta: CallToAction
   currentPath?: string | null
 }
@@ -17,15 +17,16 @@ const MobileMenu: FC<Props> = ({navData = [], cta, currentPath = undefined}) => 
       <li>
         <NavLink name="Home" href="/" currentPath={currentPath} />
       </li>
-      {navData.map((navItem: NavItem) => {
-        const {_id, name, slug} = navItem
+      {navData &&
+        navData.map((navItem: NavItem) => {
+          const {_id, name, slug} = navItem
 
-        return (
-          <li className="mt-1" key={_id}>
-            <NavLink name={name} href={slug} currentPath={currentPath} />
-          </li>
-        )
-      })}
+          return (
+            <li className="mt-1" key={_id}>
+              <NavLink name={name} href={slug} currentPath={currentPath} />
+            </li>
+          )
+        })}
       {cta?.buttonLabel && cta?.goTo && (
         <li className="mt-1">
           <Button href={cta.goTo} buttonType={ButtonType.White} buttonDisplay={ButtonDisplay.Block}>
