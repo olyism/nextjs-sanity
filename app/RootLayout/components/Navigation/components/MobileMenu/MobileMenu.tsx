@@ -23,7 +23,7 @@ const MobileMenu: FC<Props> = ({navData = [], cta, currentPath = undefined}) => 
 
           return (
             <li className="mt-1" key={_id}>
-              <NavLink name={name} href={slug} currentPath={currentPath} />
+              <NavLink name={name} href={`/${slug}`} currentPath={currentPath} />
             </li>
           )
         })}
