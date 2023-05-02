@@ -5,7 +5,7 @@ import Button, {ButtonType, ButtonSize} from '@/components/Button'
 import NavLink from './components/NavLink'
 
 interface Props {
-  navData?: Nav
+  navData?: Nav | null
   cta: CallToAction
   currentPath?: string | null
 }
@@ -16,15 +16,16 @@ const HeaderLinks: FC<Props> = ({navData = [], cta, currentPath = undefined}) =>
       <li>
         <NavLink name="Home" href="/" currentPath={currentPath} />
       </li>
-      {navData.map((navItem: NavItem) => {
-        const {_id, name, slug} = navItem
+      {navData &&
+        navData.map((navItem: NavItem) => {
+          const {_id, name, slug} = navItem
 
-        return (
-          <li key={_id}>
-            <NavLink name={name} href={slug} currentPath={currentPath} />
-          </li>
-        )
-      })}
+          return (
+            <li key={_id}>
+              <NavLink name={name} href={slug} currentPath={currentPath} />
+            </li>
+          )
+        })}
       {cta?.buttonLabel && cta?.goTo && (
         <li>
           <Button href={cta.goTo} buttonType={ButtonType.Primary} buttonSize={ButtonSize.Small}>

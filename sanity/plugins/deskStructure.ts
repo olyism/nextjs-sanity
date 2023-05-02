@@ -1,9 +1,11 @@
-const deskStructure = (S) =>
+import type {StructureBuilder} from 'sanity/desk'
+
+const deskStructure = (S: StructureBuilder) =>
   S.list()
     .title('Base')
     .items([
       ...S.documentTypeListItems().filter(
-        (listItem) => !['settings', 'homepage'].includes(listItem.getId())
+        (listItem) => !['settings', 'homepage'].includes(listItem?.getId() ?? '')
       ),
       S.divider(),
       S.listItem()
