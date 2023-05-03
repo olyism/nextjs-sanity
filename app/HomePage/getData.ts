@@ -7,7 +7,7 @@ const getData = async () => {
       hero{
         title,
         description,
-        "imageAssetRecord": image.asset,
+        image,
         "button": {
           "label": buttonGroup.label,
           "link": buttonGroup.link->slug

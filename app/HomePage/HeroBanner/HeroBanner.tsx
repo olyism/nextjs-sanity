@@ -1,38 +1,26 @@
 import {FC} from 'react'
-import Image from 'next/image'
 import cn from 'classnames'
-import client from '@/lib/client'
-import imageUrlBuilder from '@sanity/image-url'
 import type {SanityImageSource} from '@sanity/image-url/lib/types/types'
 import Button, {ButtonType} from '@/components/Button'
 import Container from '@/components/Container'
-
-const builder = imageUrlBuilder(client)
-const urlFor = (source: SanityImageSource) => builder.image(source)
+import BackgroundImage from './components/BackgroundImage'
 
 interface Props {
-  hero?: {
-    title?: string
-    description?: string
-    imageAssetRecord?: {
-      _ref: string
-      _type: string
-    }
-    button?: {
-      label: string
-      link: string
-    }
-  }
+  hero: {
+    title: string | null
+    description: string | null
+    image: SanityImageSource | null
+    button: {
+      label: string | null
+      link: string | null
+    } | null
+  } | null
 }
 
-const HeroBanner: FC<Props> = ({hero = undefined}) => {
-  if (!hero) {
-    return null
-  }
+const HeroBanner: FC<Props> = ({hero}) => {
+  if (!hero) return null
 
-  const {title, description, imageAssetRecord, button} = hero
-
-  const bgImg = imageAssetRecord ? urlFor(imageAssetRecord).width(1240).url() : undefined
+  const {title, description, image, button} = hero
 
   return (
     <header className={cn(['py-4', 'relative'], ['sm:py-8', 'sm:min-h-[400px]'])}>
@@ -61,16 +49,7 @@ const HeroBanner: FC<Props> = ({hero = undefined}) => {
           )}
         </article>
       </Container>
-      <div className="bg-cobalt absolute top-0 w-full h-[200px] sm:h-full">
-        {bgImg && (
-          <Image
-            alt={`Background image${title ? ` for ${title}` : ''}`}
-            className="object-cover"
-            src={bgImg}
-            fill
-          />
-        )}
-      </div>
+      {image && <BackgroundImage image={image} title={title} />}
     </header>
   )
 }
