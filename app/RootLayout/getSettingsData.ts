@@ -10,7 +10,7 @@ const getSettingsData = async () => {
       },
       cta{
         buttonLabel,
-        goTo
+        "goTo": goTo->slug
       },
       "tel": contact.tel
     }[0]

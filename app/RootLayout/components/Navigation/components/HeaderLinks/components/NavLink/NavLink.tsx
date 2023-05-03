@@ -16,7 +16,7 @@ const NavLink: FC<Props> = ({name, href, currentPath = undefined}) => (
         ? ['cursor-default', 'underline', 'underline-offset-4', 'decoration-cobalt', 'decoration-2']
         : ['hover:bg-cobalt-50', 'hover:text-cobalt-800']
     )}
-    href={`/${href}`}
+    href={href}
   >
     {name}
   </Link>
