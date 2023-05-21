@@ -42,5 +42,16 @@ export default {
         },
       ],
     },
+    {
+      name: 'blocks',
+      title: 'Content Blocks',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'contentBlock' }],
+        },
+      ],
+    },
   ],
 }

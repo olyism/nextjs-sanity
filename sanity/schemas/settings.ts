@@ -20,7 +20,10 @@ export default {
       of: [
         {
           type: 'reference',
-          to: [{type: 'page'}],
+          to: [
+            { type: 'page' },
+            { type: 'contentBlock' },
+          ],
         },
       ],
     },
