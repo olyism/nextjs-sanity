@@ -2,17 +2,13 @@ import type {Rule} from 'sanity'
 import slugify from '@/lib/slugify'
 
 export default {
-  name: 'page',
+  name: 'contentBlock',
   type: 'document',
-  title: 'Page',
+  title: 'Content Block',
   fields: [
     {
       name: 'name',
       title: 'Name',
-      type: 'string',
-    },
-    {
-      name: 'title',
       type: 'string',
     },
     {
@@ -24,7 +20,6 @@ export default {
         source: 'name',
         slugify: slugify,
       },
-      description: "A slug is the web page's address (e.g. example.com/slug)",
     },
     {
       name: 'content',

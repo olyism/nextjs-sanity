@@ -6,7 +6,7 @@ const getSettingsData = async () => {
       title,
       description,
       nav[]->{
-        _id, name, slug
+        _id, _type, name, slug
       },
       cta{
         buttonLabel,

@@ -3,7 +3,7 @@ import cn from 'classnames'
 import Link from 'next/link'
 
 interface Props {
-  name: string
+  name: string | null
   href: string
   currentPath?: string | null
 }

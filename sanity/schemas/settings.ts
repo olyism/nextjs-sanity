@@ -14,13 +14,17 @@ export default {
       type: 'text',
     },
     {
+      name: 'logo',
+      type: 'image',
+    },
+    {
       name: 'nav',
       title: 'Navigation',
       type: 'array',
       of: [
         {
           type: 'reference',
-          to: [{type: 'page'}],
+          to: [{type: 'page'}, {type: 'contentBlock'}],
         },
       ],
     },
