@@ -1,1 +1,1 @@
-export { default } from './ContentPage';
+export { default } from './_components/ContentPage';
