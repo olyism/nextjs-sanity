@@ -12,6 +12,12 @@ const getData = async () => {
           "label": buttonGroup.label,
           "link": buttonGroup.link->slug.current
         }
+      },
+      contentBlocks[]->{
+        _id,
+        name,
+        content,
+        "slug": slug.current
       }
     }[0]
   `)

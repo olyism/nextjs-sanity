@@ -32,7 +32,7 @@ export default {
             {
               name: 'link',
               type: 'reference',
-              to: [{type: 'page'}],
+              to: [{type: 'page'}, {type: 'contentBlock'}],
             },
           ],
         },
@@ -43,13 +43,13 @@ export default {
       ],
     },
     {
-      name: 'blocks',
+      name: 'contentBlocks',
       title: 'Content Blocks',
       type: 'array',
       of: [
         {
           type: 'reference',
-          to: [{ type: 'contentBlock' }],
+          to: [{type: 'contentBlock'}],
         },
       ],
     },

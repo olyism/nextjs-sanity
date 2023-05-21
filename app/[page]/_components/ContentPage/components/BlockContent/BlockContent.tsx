@@ -1,7 +1,7 @@
 import type {FC} from 'react'
 import type {PortableTextBlock, ArbitraryTypedObject} from '@portabletext/types'
 import {PortableText} from '@portabletext/react'
-import ImageComponent from './components/ImageComponent'
+import ImageComponent from '@/components/ImageComponent'
 
 type Value = PortableTextBlock | ArbitraryTypedObject
 

@@ -1,6 +1,6 @@
 import {FC} from 'react'
 import CallToAction from 'types/CallToAction'
-import Nav, {NavItem, NavType} from '@/types/Nav'
+import Nav, {NavItem} from '@/types/Nav'
 import Button, {ButtonType, ButtonSize} from '@/components/Button'
 import NavLink from './components/NavLink'
 import getNavHref from '@/lib/getNavHref'
@@ -21,10 +21,12 @@ const HeaderLinks: FC<Props> = ({navData = [], cta, currentPath = undefined}) =>
         navData.map((navItem: NavItem) => {
           const {_id, _type, name, slug} = navItem
 
-          return name && (
-            <li key={_id}>
-              <NavLink name={name} href={getNavHref(slug, _type)} currentPath={currentPath} />
-            </li>
+          return (
+            name && (
+              <li key={_id}>
+                <NavLink name={name} href={getNavHref(slug, _type)} currentPath={currentPath} />
+              </li>
+            )
           )
         })}
       {cta?.buttonLabel && cta?.goTo && (
