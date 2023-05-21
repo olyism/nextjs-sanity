@@ -1,8 +1,9 @@
 import {FC} from 'react'
 import CallToAction from 'types/CallToAction'
-import Nav, {NavItem} from '@/types/Nav'
+import Nav, {NavItem, NavType} from '@/types/Nav'
 import Button, {ButtonType, ButtonSize} from '@/components/Button'
 import NavLink from './components/NavLink'
+import getNavHref from '@/lib/getNavHref'
 
 interface Props {
   navData?: Nav | null
@@ -18,15 +19,12 @@ const HeaderLinks: FC<Props> = ({navData = [], cta, currentPath = undefined}) =>
       </li>
       {navData &&
         navData.map((navItem: NavItem) => {
-          const {_id, name, slug} = navItem
+          const {_id, _type, name, slug} = navItem
 
-          return (
-            name &&
-            slug && (
-              <li key={_id}>
-                <NavLink name={name} href={`/${slug}`} currentPath={currentPath} />
-              </li>
-            )
+          return name && (
+            <li key={_id}>
+              <NavLink name={name} href={getNavHref(slug, _type)} currentPath={currentPath} />
+            </li>
           )
         })}
       {cta?.buttonLabel && cta?.goTo && (

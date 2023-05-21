@@ -1,3 +1,5 @@
+import slugify from '@/lib/slugify'
+
 export default {
   name: 'page',
   type: 'document',
@@ -15,7 +17,12 @@ export default {
     {
       name: 'slug',
       title: 'Slug',
-      type: 'string',
+      type: 'slug',
+      validation: Rule => Rule.required(),
+      options: {
+        source: 'name',
+        slugify: slugify,
+      },
       description: "A slug is the web page's address (e.g. example.com/slug)",
     },
     {

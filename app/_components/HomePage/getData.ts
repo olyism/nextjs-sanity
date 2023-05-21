@@ -10,7 +10,7 @@ const getData = async () => {
         image,
         "button": {
           "label": buttonGroup.label,
-          "link": buttonGroup.link->slug
+          "link": buttonGroup.link->slug.current
         }
       }
     }[0]

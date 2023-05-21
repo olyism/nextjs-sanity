@@ -19,13 +19,12 @@ const MobileMenu: FC<Props> = ({navData = [], cta, currentPath = undefined}) => 
       </li>
       {navData &&
         navData.map((navItem: NavItem) => {
-          const {_id, name, slug} = navItem
+          const {_id, _type, name, slug} = navItem
 
           return (
-            name &&
-            slug && (
+            name && (
               <li className="mt-1" key={_id}>
-                <NavLink name={name} href={`/${slug}`} currentPath={currentPath} />
+                <NavLink name={name} href={getNavHref(slug, _type)} currentPath={currentPath} />
               </li>
             )
           )

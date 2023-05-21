@@ -9,7 +9,7 @@ const getGroq = (page: string) => {
       }[0]`
     default:
       return `
-        *[_type == "page" && slug == "${page}"]{
+        *[_type == "page" && slug.current == "${page}"]{
           name, title, content
         }[0]
       `
