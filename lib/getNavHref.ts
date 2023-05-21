@@ -1,16 +1,16 @@
 import type SanitySlug from '@/types/SanitySlug'
 import {NavType} from '@/types/Nav'
 
-const getNavHref = (slug: SanitySlug, navType: NavType): string | null => {
+const getNavHref = (slug: SanitySlug | null, navType: NavType | null): string => {
   if (navType === NavType.contentBlock) {
-    return `/#${slug.current}`
+    return `/#${slug?.current}`
   }
 
   if (navType === NavType.page) {
-    return `/${slug.current}`
+    return `/${slug?.current}`
   }
 
-  return null
+  return ''
 }
 
 export default getNavHref

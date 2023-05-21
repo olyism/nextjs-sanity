@@ -29,7 +29,7 @@ const ContentBlocks: FC<Props> = ({contentBlocks}) =>
                 key={_id ?? '' + Math.random()}
               >
                 <article className="prose">
-                  <PortableText components={components} value={content} />
+                  {content && <PortableText components={components} value={content} />}
                 </article>
               </li>
             )

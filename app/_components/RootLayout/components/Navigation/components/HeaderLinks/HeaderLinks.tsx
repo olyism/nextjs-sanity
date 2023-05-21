@@ -22,6 +22,7 @@ const HeaderLinks: FC<Props> = ({navData = [], cta, currentPath = undefined}) =>
           const {_id, _type, name, slug} = navItem
 
           return (
+            slug &&
             name && (
               <li key={_id}>
                 <NavLink name={name} href={getNavHref(slug, _type)} currentPath={currentPath} />

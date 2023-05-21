@@ -7,7 +7,7 @@ export enum NavType {
 
 export type NavItem = {
   _id: string | null
-  _type: NavType
+  _type: NavType | null
   name: string | null
   slug: SanitySlug | null
 }

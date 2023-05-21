@@ -1,5 +1,6 @@
 import type {FC} from 'react'
 import cn from 'classnames'
+import getNavHref from '@/lib/getNavHref'
 import CallToAction from '@/types/CallToAction'
 import Nav, {NavItem} from '@/types/Nav'
 import Button, {ButtonType, ButtonDisplay} from '@/components/Button'

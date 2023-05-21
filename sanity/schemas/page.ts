@@ -1,3 +1,4 @@
+import type {Rule} from 'sanity'
 import slugify from '@/lib/slugify'
 
 export default {
@@ -18,7 +19,7 @@ export default {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      validation: Rule => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
       options: {
         source: 'name',
         slugify: slugify,
