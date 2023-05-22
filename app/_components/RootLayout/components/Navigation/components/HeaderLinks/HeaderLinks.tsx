@@ -1,7 +1,7 @@
 import {FC} from 'react'
 import CallToAction from 'types/CallToAction'
 import Nav, {NavItem} from '@/types/Nav'
-import Button, {ButtonType, ButtonSize} from '@/components/Button'
+import Button, {ButtonStyle, ButtonSize} from '@/components/Button'
 import NavLink from './components/NavLink'
 import getNavHref from '@/lib/getNavHref'
 
@@ -32,7 +32,7 @@ const HeaderLinks: FC<Props> = ({navData = [], cta, currentPath = undefined}) =>
         })}
       {cta?.buttonLabel && cta?.goTo && (
         <li>
-          <Button href={cta.goTo} buttonType={ButtonType.Primary} buttonSize={ButtonSize.Small}>
+          <Button href={cta.goTo} buttonStyle={ButtonStyle.Primary} buttonSize={ButtonSize.Small}>
             {cta.buttonLabel}
           </Button>
         </li>

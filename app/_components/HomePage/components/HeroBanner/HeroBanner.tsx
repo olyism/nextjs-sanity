@@ -1,7 +1,7 @@
 import {FC} from 'react'
 import cn from 'classnames'
 import type {SanityImageSource} from '@sanity/image-url/lib/types/types'
-import Button, {ButtonType} from '@/components/Button'
+import Button, {ButtonStyle} from '@/components/Button'
 import Container from '@/components/Container'
 import BackgroundImage from './components/BackgroundImage'
 
@@ -43,7 +43,7 @@ const HeroBanner: FC<Props> = ({hero}) => {
           )}
           {description && <p className="mb-4 mt-3 sm:text-lg">{description}</p>}
           {button && (
-            <Button href={`/${button.link}`} buttonType={ButtonType.Primary}>
+            <Button href={`/${button.link}`} buttonStyle={ButtonStyle.Primary}>
               {button.label}
             </Button>
           )}

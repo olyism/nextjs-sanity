@@ -3,7 +3,7 @@ import cn from 'classnames'
 import getNavHref from '@/lib/getNavHref'
 import CallToAction from '@/types/CallToAction'
 import Nav, {NavItem} from '@/types/Nav'
-import Button, {ButtonType, ButtonDisplay} from '@/components/Button'
+import Button, {ButtonStyle, ButtonDisplay} from '@/components/Button'
 import NavLink from './components/NavLink'
 
 interface Props {
@@ -32,7 +32,11 @@ const MobileMenu: FC<Props> = ({navData = [], cta, currentPath = undefined}) => 
         })}
       {cta?.buttonLabel && cta?.goTo && (
         <li className="mt-1">
-          <Button href={cta.goTo} buttonType={ButtonType.White} buttonDisplay={ButtonDisplay.Block}>
+          <Button
+            href={cta.goTo}
+            buttonStyle={ButtonStyle.White}
+            buttonDisplay={ButtonDisplay.Block}
+          >
             {cta.buttonLabel}
           </Button>
         </li>
