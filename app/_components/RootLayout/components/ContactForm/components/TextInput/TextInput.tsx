@@ -3,6 +3,7 @@ import {useFormContext} from 'react-hook-form'
 
 export enum TextInputType {
   Email = 'email',
+  Tel = 'tel',
   Text = 'text',
 }
 

@@ -23,7 +23,7 @@ export async function generateMetadata() {
 }
 
 const RootLayout = async ({children}: {children: ReactNode}) => {
-  const {nav: navData, cta, tel} = await settingsData
+  const {nav: navData, cta, tel, email} = await settingsData
 
   return (
     <html lang="en">
@@ -34,7 +34,7 @@ const RootLayout = async ({children}: {children: ReactNode}) => {
             {children}
             <section>
               <Container>
-                <ContactForm />
+                <ContactForm email={email} />
               </Container>
             </section>
           </main>

@@ -1,28 +1,49 @@
 'use client'
 
-import {useForm, FormProvider} from 'react-hook-form'
+import {FC} from 'react'
+import {useForm, FormProvider, type FieldValue} from 'react-hook-form'
 import Button, {ButtonType, ButtonStyle} from '@/components/Button'
 import TextInput, {TextInputType} from './components/TextInput'
 import Textarea from './components/Textarea'
+import contact from './contact'
 
-const ContactForm = () => {
+interface Props {
+  email?: string
+}
+
+const ContactForm: FC<Props> = ({email}) => {
   const methods = useForm()
   const {handleSubmit, register} = methods
 
-  const onSubmit = (data) => {
-    if (data.botcheck) {
+  const onSubmit = async (formData) => {
+    if (formData.botcheck) {
       return
     }
 
-    console.log(data)
+    const {from, phone, message} = formData
+
+    const mailData = {
+      from,
+      to: email || 'hello@dplgroup.com.au',
+      subject: 'New Submission from dplgroup.com.au',
+      text: `${message}${phone ? ` (phone: ${phone})` : ''}`,
+    }
+
+    try {
+      const req = await contact(mailData)
+
+      if (req.status === 250) {
+        console.log('success')
+      }
+    } catch (e) {
+      console.log(e)
+      console.log('error')
+    }
   }
 
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="hidden" name="subject" value="New Submission from dplgroup.com.au" />
-        <input type="hidden" name="from_name" value="DPL website" />
-        <input type="hidden" name="replyto" value="helloi@dplgroup.com.au" />
         <input
           {...register('botcheck')}
           type="checkbox"
@@ -31,8 +52,8 @@ const ContactForm = () => {
         />
         <div className="md:flex md:gap-4 md:w-full">
           <TextInput type={TextInputType.Text} name="name" label="Name" required />
-          <TextInput type={TextInputType.Email} name="email" label="Email" required />
-          <TextInput type={TextInputType.Text} name="phone" label="Phone" />
+          <TextInput type={TextInputType.Email} name="from" label="Email" required />
+          <TextInput type={TextInputType.Tel} name="phone" label="Phone" />
         </div>
         <Textarea name="message" label="Message" required></Textarea>
         <Button type={ButtonType.Submit} buttonStyle={ButtonStyle.Primary}>
