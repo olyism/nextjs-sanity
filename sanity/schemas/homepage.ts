@@ -12,6 +12,10 @@ export default {
       name: 'hero',
       title: 'Hero banner',
       type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
       fields: [
         {
           name: 'title',
@@ -24,6 +28,10 @@ export default {
         {
           name: 'buttonGroup',
           type: 'object',
+          options: {
+            collapsible: true,
+            collapsed: true,
+          },
           fields: [
             {
               name: 'label',

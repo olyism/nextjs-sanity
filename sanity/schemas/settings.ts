@@ -14,8 +14,28 @@ export default {
       type: 'text',
     },
     {
-      name: 'logo',
-      type: 'image',
+      name: 'styles',
+      type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+      fields: [
+        {
+          name: 'logo',
+          type: 'image',
+        },
+        {
+          name: 'brandColor',
+          type: 'color',
+          title: 'Brand color',
+        },
+        {
+          name: 'primaryColor',
+          type: 'color',
+          title: 'Primary color',
+        },
+      ],
     },
     {
       name: 'nav',
@@ -32,6 +52,10 @@ export default {
       name: 'cta',
       title: 'Call to action',
       type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
       fields: [
         {
           name: 'buttonLabel',

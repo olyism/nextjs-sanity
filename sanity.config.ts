@@ -1,4 +1,5 @@
-import {defineConfig, isDev} from 'sanity'
+import {defineConfig} from 'sanity'
+import {colorInput} from '@sanity/color-input'
 import {visionTool} from '@sanity/vision'
 import {deskTool} from 'sanity/desk'
 import {schemaTypes} from './sanity/schemas'
@@ -13,7 +14,7 @@ export default defineConfig({
   // @ts-ignore
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
 
-  plugins: [deskTool({structure: deskStructure}), visionTool()],
+  plugins: [deskTool({structure: deskStructure}), visionTool(), colorInput()],
 
   schema: {
     types: schemaTypes,
