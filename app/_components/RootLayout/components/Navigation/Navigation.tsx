@@ -7,17 +7,18 @@ import {HiBars2, HiXMark, HiPhone} from 'react-icons/hi2'
 import type CallToAction from '@/types/CallToAction'
 import type Nav from '@/types/Nav'
 import Container from '@/components/Container'
-import Logo from '@/components/Logo'
+import Logo, {type Props as LogoProps} from './components/Logo'
 import MobileMenu from './components/MobileMenu'
 import HeaderLinks from './components/HeaderLinks'
 
 interface Props {
+  logo: LogoProps
   navData?: Nav | null
   cta: CallToAction
   tel: string | null
 }
 
-const Navigation: FC<Props> = ({navData = [], cta, tel}) => {
+const Navigation: FC<Props> = ({logo, navData = [], cta, tel}) => {
   const [isMobileMenuShown, setIsMobileMenuShown] = useState(false)
   const pathname = usePathname()
 
@@ -41,7 +42,7 @@ const Navigation: FC<Props> = ({navData = [], cta, tel}) => {
         <Container>
           <div className="flex justify-between items-center py-2">
             <Link href="/">
-              <Logo />
+              <Logo src={logo.src} width={logo.width} height={logo.height} />
             </Link>
             <div className="flex items-center gap-6 md:hidden">
               {tel && (

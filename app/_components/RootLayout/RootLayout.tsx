@@ -4,7 +4,7 @@ import Container from '@/components/Container'
 import ContactForm from './components/ContactForm'
 import Footer from './components/Footer'
 import Navigation from './components/Navigation'
-import getSettingsData from './getSettingsData'
+import getData from './getData'
 import './globals.css'
 
 const openSans = Open_Sans({
@@ -12,10 +12,11 @@ const openSans = Open_Sans({
   variable: '--open-sans-font',
 })
 
-const settingsData = getSettingsData()
+const data = getData()
 
 export async function generateMetadata() {
-  const {title, description} = await settingsData
+  const {title, description} = await data
+
   return {
     title,
     description,
@@ -23,13 +24,13 @@ export async function generateMetadata() {
 }
 
 const RootLayout = async ({children}: {children: ReactNode}) => {
-  const {nav: navData, cta, tel, email} = await settingsData
+  const {logo, nav: navData, cta, tel, email} = await data
 
   return (
     <html lang="en">
       <body className={`bg-cobalt-100 ${openSans.variable}`}>
         <div className="mx-auto max-w-screen-2xl min-h-screen flex flex-col bg-white drop-shadow-2xl relative">
-          <Navigation navData={navData} cta={cta} tel={tel} />
+          <Navigation logo={logo} navData={navData} cta={cta} tel={tel} />
           <main className="grow">
             {children}
             <section>

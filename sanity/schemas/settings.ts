@@ -14,7 +14,7 @@ export default {
       type: 'text',
     },
     {
-      name: 'styles',
+      name: 'logo',
       type: 'object',
       options: {
         collapsible: true,
@@ -22,9 +22,27 @@ export default {
       },
       fields: [
         {
-          name: 'logo',
+          name: 'src',
           type: 'image',
         },
+        {
+          name: 'width',
+          type: 'number',
+        },
+        {
+          name: 'height',
+          type: 'number',
+        },
+      ],
+    },
+    {
+      name: 'styles',
+      type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+      fields: [
         {
           name: 'brandColor',
           type: 'color',

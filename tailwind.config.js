@@ -38,6 +38,7 @@ module.exports = {
       },
       height: {
         header: '58px',
+        logo: '40px',
       },
     },
   },
