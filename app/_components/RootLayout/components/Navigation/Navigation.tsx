@@ -37,7 +37,7 @@ const Navigation: FC<Props> = ({navData = [], cta, tel}) => {
           </Container>
         </address>
       )}
-      <header className="bg-white drop-shadow-sm">
+      <header className="bg-white drop-shadow-sm sticky top-0 z-20 h-header">
         <Container>
           <div className="flex justify-between items-center py-2">
             <Link href="/">

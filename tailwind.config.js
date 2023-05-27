@@ -36,6 +36,9 @@ module.exports = {
       flexGrow: {
         2: '2',
       },
+      height: {
+        header: '58px',
+      },
     },
   },
   safelist: ['text-white', 'text-cobalt'],

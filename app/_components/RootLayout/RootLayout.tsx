@@ -28,7 +28,7 @@ const RootLayout = async ({children}: {children: ReactNode}) => {
   return (
     <html lang="en">
       <body className={`bg-cobalt-100 ${openSans.variable}`}>
-        <div className="mx-auto max-w-screen-2xl min-h-screen flex flex-col bg-white drop-shadow-2xl">
+        <div className="mx-auto max-w-screen-2xl min-h-screen flex flex-col bg-white drop-shadow-2xl relative">
           <Navigation navData={navData} cta={cta} tel={tel} />
           <main className="grow">
             {children}
