@@ -7,7 +7,7 @@ interface Props {
 }
 
 const Container: FC<Props> = ({children, className = undefined}) => (
-  <div className={cn('mx-auto', 'max-w-screen-lg', 'px-4', className)}>{children}</div>
+  <div className={cn('mx-auto', 'max-w-4xl', 'px-4', className)}>{children}</div>
 )
 
 export default Container

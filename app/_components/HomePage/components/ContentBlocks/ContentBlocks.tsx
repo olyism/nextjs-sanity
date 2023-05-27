@@ -1,42 +1,36 @@
 import type {FC} from 'react'
-import {PortableText} from '@portabletext/react'
-import type ContentBlock from '@/types/ContentBlock'
+import type ContentBlockProps from '@/types/ContentBlock'
 import Container from '@/components/Container'
-import ImageComponent from '@/components/ImageComponent'
+import ContentBlock from './components/ContentBlock'
 
 interface Props {
-  contentBlocks: ContentBlock[] | null
+  contentBlocks: ContentBlockProps[]
 }
 
 const ContentBlocks: FC<Props> = ({contentBlocks}) =>
-  contentBlocks && (
-    <section className="py-12">
+  contentBlocks ? (
+    <section className="py-12 mx-w-screen-md">
       <Container>
         <ul>
           {contentBlocks.map((contentBlock) => {
-            const {_id, name, content, slug} = contentBlock
+            if (!contentBlock) return null
 
-            const components = {
-              types: {
-                image: ImageComponent,
-              },
-            }
+            const {_id, name, content, slug, featuredImage} = contentBlock
 
             return (
               <li
                 aria-label={`Content for ${name}`}
+                className="mb-10"
                 id={slug ?? '' + Math.random()}
-                key={_id ?? '' + Math.random()}
+                key={_id}
               >
-                <article className="prose">
-                  {content && <PortableText components={components} value={content} />}
-                </article>
+                <ContentBlock content={content} featuredImage={featuredImage} />
               </li>
             )
           })}
         </ul>
       </Container>
     </section>
-  )
+  ) : null
 
 export default ContentBlocks

@@ -4,11 +4,13 @@ import type {SanityImageSource} from '@sanity/image-url/lib/types/types'
 import urlFor from '@/lib/urlFor'
 
 interface Props {
-  image: SanityImageSource
-  title: string | null
+  image?: SanityImageSource
+  title?: string
 }
 
-const BackgroundImage: FC<Props> = ({image, title = undefined}) => {
+const BackgroundImage: FC<Props> = ({image = undefined, title = undefined}) => {
+  if (!image) return null
+
   const src = urlFor(image).width(1240).url()
 
   return (

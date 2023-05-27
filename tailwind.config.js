@@ -32,7 +32,11 @@ module.exports = {
     fontFamily: {
       display: ['var(--open-sans-font)'],
     },
-    extend: {},
+    extend: {
+      flexGrow: {
+        2: '2',
+      },
+    },
   },
   safelist: ['text-white', 'text-cobalt'],
   plugins: [require('@tailwindcss/typography')],
