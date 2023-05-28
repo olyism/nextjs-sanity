@@ -1,3 +1,5 @@
+import GoogleFontSelector from './components/GoogleFontSelector'
+
 export default {
   name: 'settings',
   type: 'document',
@@ -52,6 +54,20 @@ export default {
           name: 'primaryColor',
           type: 'color',
           title: 'Primary color',
+        },
+        {
+          name: 'systemFont',
+          type: 'string',
+          components: {
+            input: GoogleFontSelector,
+          },
+        },
+        {
+          name: 'headingFont',
+          type: 'string',
+          components: {
+            input: GoogleFontSelector,
+          },
         },
       ],
     },

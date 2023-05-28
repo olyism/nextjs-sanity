@@ -14,7 +14,7 @@ const NavLink: FC<Props> = ({name, href, currentPath = undefined}) => (
       [
         'px-2',
         'py-3',
-        'text-gray-50',
+        'text-white',
         'text-center',
         'font-display',
         'font-semibold',

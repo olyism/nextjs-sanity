@@ -13,6 +13,8 @@ const getData = async () => {
       styles{
         "brandColor": brandColor.hex,
         "primaryColor": primaryColor.hex,
+        systemFont,
+        headingFont,
       },
       nav[]->{
         _id, _type, name, slug

@@ -45,7 +45,7 @@ const HeroBanner: FC<Props> = ({title, description, image, button}) => {
           )}
         >
           {title && (
-            <h1 className="mb-3 font-display font-bold text-template text-3xl sm:text-4xl">
+            <h1 className="mb-3 font-heading font-bold text-template text-3xl sm:text-4xl">
               {title}
             </h1>
           )}

@@ -16,7 +16,8 @@ module.exports = {
       'base-color': colors.slate['700'],
     },
     fontFamily: {
-      display: ['var(--open-sans-font)'],
+      heading: ['var(--heading-font)'],
+      system: ['var(--system-font)'],
     },
     extend: {
       flexGrow: {

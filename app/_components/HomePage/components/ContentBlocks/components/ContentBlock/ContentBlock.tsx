@@ -22,7 +22,12 @@ const ContentBlock: FC<Props> = ({content, featuredImage}) => {
     <article className={cn(hasFeaturedImage && 'flex flex-col sm:flex-row gap-4 sm:gap-6')}>
       {hasFeaturedImage && <FeaturedImage src={src} alt={alt} align={align} pos={pos} />}
       {content && (
-        <div className={cn('prose', hasFeaturedImage ? 'flex-1 sm:order-1 md:grow-2' : 'mx-auto')}>
+        <div
+          className={cn(
+            ['prose', 'prose-headings:font-heading'],
+            hasFeaturedImage ? 'flex-1 sm:order-1 md:grow-2' : 'mx-auto'
+          )}
+        >
           <PortableText components={components} value={content} />
         </div>
       )}

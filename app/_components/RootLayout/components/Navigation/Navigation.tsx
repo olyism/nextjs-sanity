@@ -30,8 +30,8 @@ const Navigation: FC<Props> = ({logo, navData = [], cta, tel}) => {
     <>
       {tel && (
         <address
-          className="py-1 text-sm text-right not-italic hidden md:block"
-          style={{backgroundColor: '#f3f4f6'}}
+          className="py-1 text-sm text-right text-gray-600 not-italic hidden md:block"
+          style={{backgroundColor: '#e5e7eb'}}
         >
           <Container>
             <a className="inline-flex items-center gap-1" href={`tel:${tel}`}>

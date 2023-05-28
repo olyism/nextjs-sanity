@@ -1,17 +1,11 @@
 import type {ReactNode} from 'react'
-import {Open_Sans} from 'next/font/google'
 import Container from '@/components/Container'
 import ContactForm from './components/ContactForm'
 import Footer from './components/Footer'
 import Navigation from './components/Navigation'
-import Style from './components/Style'
+import Styles from './components/Styles'
 import getData from './getData'
 import './globals.css'
-
-const openSans = Open_Sans({
-  subsets: ['latin'],
-  variable: '--open-sans-font',
-})
 
 const data = getData()
 
@@ -29,8 +23,8 @@ const RootLayout = async ({children}: {children: ReactNode}) => {
 
   return (
     <html lang="en">
-      <body className={`bg-gray-100 ${openSans.variable}`}>
-        {styles && <Style styles={styles} />}
+      <body className="bg-gray-100 font-system">
+        <Styles styles={styles} />
         <div className="mx-auto max-w-screen-2xl min-h-screen flex flex-col bg-white drop-shadow-2xl relative">
           <Navigation logo={logo} navData={navData} cta={cta} tel={tel} />
           <main className="grow">
