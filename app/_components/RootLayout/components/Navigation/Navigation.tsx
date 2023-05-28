@@ -29,7 +29,10 @@ const Navigation: FC<Props> = ({logo, navData = [], cta, tel}) => {
   return (
     <>
       {tel && (
-        <address className="py-1 text-sm text-right not-italic bg-cobalt-100 hidden md:block">
+        <address
+          className="py-1 text-sm text-right not-italic hidden md:block"
+          style={{backgroundColor: '#f3f4f6'}}
+        >
           <Container>
             <a className="inline-flex items-center gap-1" href={`tel:${tel}`}>
               <HiPhone className="h-3 w-3" />

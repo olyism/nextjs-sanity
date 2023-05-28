@@ -13,8 +13,14 @@ const NavLink: FC<Props> = ({name, href, currentPath = undefined}) => (
     className={cn(
       ['px-4', 'py-3', 'text-sm', 'text-template', 'rounded', 'font-semibold'],
       currentPath === href
-        ? ['cursor-default', 'underline', 'underline-offset-4', 'decoration-cobalt', 'decoration-2']
-        : ['hover:bg-cobalt-50', 'hover:text-cobalt-800']
+        ? [
+            'cursor-default',
+            'underline',
+            'underline-offset-4',
+            'decoration-[var(--primary-color)]',
+            'decoration-2',
+          ]
+        : ['hover:bg-gray-50', 'hover:text-gray-800']
     )}
     href={href}
   >

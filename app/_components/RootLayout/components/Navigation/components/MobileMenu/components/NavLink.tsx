@@ -14,7 +14,7 @@ const NavLink: FC<Props> = ({name, href, currentPath = undefined}) => (
       [
         'px-2',
         'py-3',
-        'text-cobalt-50',
+        'text-gray-50',
         'text-center',
         'font-display',
         'font-semibold',
@@ -27,7 +27,7 @@ const NavLink: FC<Props> = ({name, href, currentPath = undefined}) => (
             'underline',
             'underline-offset-4',
             'underline-width-4',
-            'decoration-cobalt-400',
+            'decoration-[var(--primary--color)]',
             'decoration-2',
           ]
         : 'hover:bg-slate-700'
