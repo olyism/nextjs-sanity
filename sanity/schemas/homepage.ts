@@ -26,7 +26,8 @@ export default {
           type: 'string',
         },
         {
-          name: 'buttonGroup',
+          name: 'cta',
+          title: 'Call-to-action button',
           type: 'object',
           options: {
             collapsible: true,
@@ -34,13 +35,19 @@ export default {
           },
           fields: [
             {
-              name: 'label',
+              name: 'buttonLabel',
               type: 'string',
             },
             {
-              name: 'link',
+              name: 'jumpToContactForm',
+              type: 'boolean',
+            },
+            {
+              name: 'goTo',
               type: 'reference',
               to: [{type: 'page'}, {type: 'contentBlock'}],
+              // @ts-ignore
+              hidden: ({document}) => document?.hero?.cta?.jumpToContactForm,
             },
           ],
         },

@@ -2,6 +2,8 @@
 
 const colors = require('tailwindcss/colors')
 
+const headerHeight = '58px'
+
 module.exports = {
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
@@ -24,8 +26,13 @@ module.exports = {
         2: '2',
       },
       height: {
-        header: '58px',
+        header: headerHeight,
+      },
+      maxHeight: {
         logo: '40px',
+      },
+      scrollPadding: {
+        header: headerHeight,
       },
     },
   },

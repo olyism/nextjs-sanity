@@ -9,7 +9,7 @@ interface Props {
 
 const ContentBlocks: FC<Props> = ({contentBlocks}) =>
   contentBlocks ? (
-    <section className="py-12 mx-w-screen-md">
+    <section className="py-12">
       <Container>
         <ul>
           {contentBlocks.map((contentBlock) => {

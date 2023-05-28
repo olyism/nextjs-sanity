@@ -7,9 +7,10 @@ import {HiBars2, HiXMark, HiPhone} from 'react-icons/hi2'
 import type CallToAction from '@/types/CallToAction'
 import type Nav from '@/types/Nav'
 import Container from '@/components/Container'
+import HeaderLinks from './components/HeaderLinks'
 import Logo, {type Props as LogoProps} from './components/Logo'
 import MobileMenu from './components/MobileMenu'
-import HeaderLinks from './components/HeaderLinks'
+import Phone from './components/Phone'
 
 interface Props {
   logo: LogoProps
@@ -28,19 +29,7 @@ const Navigation: FC<Props> = ({logo, navData = [], cta, tel}) => {
 
   return (
     <>
-      {tel && (
-        <address
-          className="py-1 text-sm text-right text-gray-600 not-italic hidden md:block"
-          style={{backgroundColor: '#e5e7eb'}}
-        >
-          <Container>
-            <a className="inline-flex items-center gap-1" href={`tel:${tel}`}>
-              <HiPhone className="h-3 w-3" />
-              {tel}
-            </a>
-          </Container>
-        </address>
-      )}
+      <Phone tel={tel} />
       <header className="bg-white drop-shadow-sm sticky top-0 z-20 h-header">
         <Container>
           <div className="flex justify-between items-center py-2">

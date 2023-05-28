@@ -1,21 +1,25 @@
 import {FC} from 'react'
 import cn from 'classnames'
 import type {SanityImageSource} from '@sanity/image-url/lib/types/types'
+import type {CallToAction} from '@/types/CallToAction'
 import urlFor from '@/lib/urlFor'
-import Button, {ButtonStyle} from '@/components/Button'
+import {ButtonStyle} from '@/components/Button'
+import CallToActionButton from '@/app/_components/CallToActionButton'
 import Container from '@/components/Container'
 
 interface Props {
-  title: string | null
-  description: string | null
-  image: SanityImageSource | null
-  button: {
-    label: string | null
-    link: string | null
-  } | null
+  title?: string | null
+  description?: string | null
+  image?: SanityImageSource | null
+  cta?: CallToAction
 }
 
-const HeroBanner: FC<Props> = ({title, description, image, button}) => {
+const HeroBanner: FC<Props> = ({
+  title = undefined,
+  description = undefined,
+  image = undefined,
+  cta = null,
+}) => {
   const bgStyles = image
     ? {
         backgroundImage: `url('${urlFor(image).width(1240).url()}')`,
@@ -50,11 +54,7 @@ const HeroBanner: FC<Props> = ({title, description, image, button}) => {
             </h1>
           )}
           {description && <p className="mb-4 mt-3 sm:text-lg">{description}</p>}
-          {button?.link && button?.label && (
-            <Button href={`/${button.link}`} buttonStyle={ButtonStyle.Primary}>
-              {button.label}
-            </Button>
-          )}
+          <CallToActionButton cta={cta} buttonStyle={ButtonStyle.Primary} />
         </article>
       </Container>
     </header>

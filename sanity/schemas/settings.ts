@@ -97,9 +97,15 @@ export default {
           type: 'string',
         },
         {
+          name: 'jumpToContactForm',
+          type: 'boolean',
+        },
+        {
           name: 'goTo',
           type: 'reference',
-          to: [{type: 'page'}],
+          to: [{type: 'page'}, {type: 'contentBlock'}],
+          // @ts-ignore
+          hidden: ({document}) => document?.cta?.jumpToContactForm,
         },
       ],
     },

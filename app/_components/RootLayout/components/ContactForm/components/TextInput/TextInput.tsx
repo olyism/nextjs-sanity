@@ -30,7 +30,7 @@ const TextInput: FC<Props> = ({type, name, label = undefined, required = undefin
         type={type}
         name={name}
         required={required}
-        className="p-3 border-2 bg-white border-slate-300 rounded block w-full"
+        className="p-3 leading-normal border-2 bg-white border-slate-300 rounded block w-full"
       />
     </div>
   )

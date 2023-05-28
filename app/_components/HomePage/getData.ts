@@ -8,10 +8,7 @@ const getData = async () => {
         title,
         description,
         image,
-        "button": {
-          "label": buttonGroup.label,
-          "link": buttonGroup.link->slug.current,
-        },
+        cta,
       },
       contentBlocks[]->{
         _id,

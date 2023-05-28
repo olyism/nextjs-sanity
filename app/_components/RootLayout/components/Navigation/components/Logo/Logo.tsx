@@ -10,7 +10,7 @@ export interface Props {
 const Logo: FC<Props> = ({src, width, height}) => {
   return src && width && height ? (
     <Image
-      className="h-logo w-auto"
+      className="max-h-logo h-auto w-auto"
       alt="Logo of DPL Group"
       src={src}
       height={height}

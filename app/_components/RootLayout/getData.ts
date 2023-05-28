@@ -21,9 +21,11 @@ const getData = async () => {
       },
       cta{
         buttonLabel,
+        jumpToContactForm,
         "goTo": goTo->slug
       },
-      "tel": contact.tel
+      "tel": contact.tel,
+      "email": contact.email,
     }[0]
   `)
 

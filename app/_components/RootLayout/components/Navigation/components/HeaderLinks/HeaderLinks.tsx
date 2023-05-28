@@ -1,9 +1,10 @@
 import {FC} from 'react'
 import CallToAction from 'types/CallToAction'
 import Nav, {NavItem} from '@/types/Nav'
-import Button, {ButtonStyle, ButtonSize} from '@/components/Button'
-import NavLink from './components/NavLink'
 import getNavHref from '@/lib/getNavHref'
+import {ButtonStyle} from '@/components/Button'
+import NavLink from './components/NavLink'
+import CallToActionButton from '@/app/_components/CallToActionButton'
 
 interface Props {
   navData?: Nav | null
@@ -30,13 +31,9 @@ const HeaderLinks: FC<Props> = ({navData = [], cta, currentPath = undefined}) =>
             )
           )
         })}
-      {cta?.buttonLabel && cta?.goTo && (
-        <li>
-          <Button href={cta.goTo} buttonStyle={ButtonStyle.Primary} buttonSize={ButtonSize.Small}>
-            {cta.buttonLabel}
-          </Button>
-        </li>
-      )}
+      <li>
+        <CallToActionButton buttonStyle={ButtonStyle.Primary} cta={cta} />
+      </li>
     </ul>
   </nav>
 )
