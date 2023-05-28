@@ -1,4 +1,4 @@
-import {type FC, useContext} from 'react'
+import {type FC} from 'react'
 import Image from 'next/image'
 
 export interface Props {

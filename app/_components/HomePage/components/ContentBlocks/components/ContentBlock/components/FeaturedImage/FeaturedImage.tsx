@@ -1,12 +1,14 @@
 import {FC} from 'react'
 import cn from 'classnames'
-import {type FeaturedImage as ImageProps, FeaturedImageAlignment} from '@/types/ContentBlock'
+import {
+  type FeaturedImage as FeaturedImageProps,
+  FeaturedImageAlignment,
+} from '@/types/ContentBlock'
 import urlFor from '@/lib/urlFor'
 import getBgPosCSSClass from '@/lib/getBgPosCSSClass'
 
-interface Props extends ImageProps {}
-
-const FeaturedImage: FC<Props> = ({alt, src, align, pos}) => {
+// @ts-ignore
+const FeaturedImage: FC<FeaturedImageProps> = ({alt, src, align, pos}) => {
   if (!alt || !src) return null
 
   return (

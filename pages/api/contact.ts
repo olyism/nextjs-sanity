@@ -22,6 +22,7 @@ export default function POST(req: NextApiRequest) {
     secure: true,
   })
 
+  // @ts-ignore
   transporter.sendMail(message, (err, info) => {
     if (err) {
       console.log(err)

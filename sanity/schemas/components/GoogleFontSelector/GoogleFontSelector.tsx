@@ -37,6 +37,7 @@ const GoogleFontSelector: FC<Props> = ({onChange, value}) => {
     )
   }
 
+  // @ts-ignore
   const {items} = data
 
   return (
@@ -44,6 +45,7 @@ const GoogleFontSelector: FC<Props> = ({onChange, value}) => {
       <option key="none" selected>
         None
       </option>
+      {/* @ts-ignore */}
       {items.map((item) => {
         const {family, category} = item
         const value = JSON.stringify({family, category})

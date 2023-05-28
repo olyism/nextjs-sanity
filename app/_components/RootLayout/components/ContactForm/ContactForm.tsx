@@ -1,7 +1,7 @@
 'use client'
 
 import {FC} from 'react'
-import {useForm, FormProvider, type FieldValue} from 'react-hook-form'
+import {useForm, FormProvider} from 'react-hook-form'
 import Button, {ButtonType, ButtonStyle} from '@/components/Button'
 import TextInput, {TextInputType} from './components/TextInput'
 import Textarea from './components/Textarea'
@@ -15,6 +15,7 @@ const ContactForm: FC<Props> = ({email}) => {
   const methods = useForm()
   const {handleSubmit, register} = methods
 
+  // @ts-ignore
   const onSubmit = async (formData) => {
     if (formData.botcheck) {
       return

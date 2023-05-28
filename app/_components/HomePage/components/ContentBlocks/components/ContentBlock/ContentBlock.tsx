@@ -1,11 +1,11 @@
 import {FC} from 'react'
 import {PortableText} from '@portabletext/react'
 import cn from 'classnames'
-import ContentBlock from '@/types/ContentBlock'
+import ContentBlockProps from '@/types/ContentBlock'
 import ImageComponent from '@/components/ImageComponent'
 import FeaturedImage from './components/FeaturedImage'
 
-interface Props extends Omit<ContentBlock, '_id' | 'name' | 'slug'> {}
+interface Props extends Omit<ContentBlockProps, '_id' | 'name' | 'slug'> {}
 
 const ContentBlock: FC<Props> = ({content, featuredImage}) => {
   const components = {
@@ -20,6 +20,7 @@ const ContentBlock: FC<Props> = ({content, featuredImage}) => {
 
   return (
     <article className={cn(hasFeaturedImage && 'flex flex-col sm:flex-row gap-4 sm:gap-6')}>
+      {/* @ts-ignore */}
       {hasFeaturedImage && <FeaturedImage src={src} alt={alt} align={align} pos={pos} />}
       {content && (
         <div

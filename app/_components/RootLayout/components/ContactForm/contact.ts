@@ -1,3 +1,4 @@
+// @ts-ignore
 const contact = async (mailData) => {
   return fetch('/api/contact', {
     method: 'POST',
