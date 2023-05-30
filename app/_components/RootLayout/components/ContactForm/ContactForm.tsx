@@ -28,7 +28,7 @@ const ContactForm: FC<Props> = ({email, tel}) => {
 
     const mailData = {
       from,
-      to: email || 'hello@dplgroup.com.au',
+      to: email || process.env.CONTACT_EMAIL_ADDRESS,
       subject: 'New Submission from dplgroup.com.au',
       text: `${message}${phone ? ` (phone: ${phone})` : ''}`,
     }

@@ -14,12 +14,13 @@ export default function POST(req: NextApiRequest) {
   }
 
   const transporter = nodemailer.createTransport({
-    host: 'smtppro.zoho.com.au',
+    host: process.env.CONTACT_EMAIL_HOST,
+    port: 587,
     auth: {
       user: process.env.CONTACT_EMAIL_ADDRESS,
       pass: process.env.CONTACT_EMAIL_PASSWORD,
     },
-    secure: true,
+    secure: false,
   })
 
   // @ts-ignore
