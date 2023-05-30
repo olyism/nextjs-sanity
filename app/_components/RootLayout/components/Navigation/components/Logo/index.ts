@@ -1,1 +1,1 @@
-export {default, type Props} from './Logo'
+export {default} from './Logo'

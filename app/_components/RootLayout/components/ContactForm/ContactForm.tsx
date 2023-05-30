@@ -100,7 +100,7 @@ const ContactForm: FC<Props> = ({email, tel}) => {
             )}
             {isSent && (
               <div className="p-4 bg-green-100 rounded mt-6">
-                Your message has been sent. We'll reply to your email as soon as possible.
+                Your message has been sent. We&apos;ll reply to your email as soon as possible.
               </div>
             )}
           </form>

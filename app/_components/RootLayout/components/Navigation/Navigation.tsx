@@ -8,12 +8,16 @@ import type CallToAction from '@/types/CallToAction'
 import type Nav from '@/types/Nav'
 import Container from '@/components/Container'
 import HeaderLinks from './components/HeaderLinks'
-import Logo, {type Props as LogoProps} from './components/Logo'
+import Logo from './components/Logo'
 import MobileMenu from './components/MobileMenu'
 import Phone from './components/Phone'
 
 interface Props {
-  logo: LogoProps
+  logo: {
+    src: string | null
+    width: number | null
+    height: number | null
+  } | null
   navData?: Nav | null
   cta: CallToAction
   tel: string | null
@@ -33,9 +37,7 @@ const Navigation: FC<Props> = ({logo, navData = [], cta, tel}) => {
       <header className="bg-white drop-shadow-sm sticky top-0 z-20 h-header">
         <Container>
           <div className="flex justify-between items-center py-2">
-            <Link href="/">
-              <Logo src={logo.src} width={logo.width} height={logo.height} />
-            </Link>
+            <Link href="/">{logo && <Logo logo={logo} />}</Link>
             <div className="flex items-center gap-6 md:hidden">
               {tel && (
                 <a aria-hidden className="p-2" href={`tel:${tel}`}>
