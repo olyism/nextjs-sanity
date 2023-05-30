@@ -25,7 +25,7 @@ const TextInput: FC<Props> = ({type, name, label = undefined, required = undefin
         </label>
       )}
       <input
-        {...register(name)}
+        {...register(name, {required})}
         id={name}
         type={type}
         name={name}

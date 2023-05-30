@@ -11,17 +11,17 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    colors: {
-      white: '#FFFFFF',
-      template: colors.slate['900'],
-      icon: colors.slate['900'],
-      'base-color': colors.slate['700'],
-    },
     fontFamily: {
       heading: ['var(--heading-font)'],
       system: ['var(--system-font)'],
     },
     extend: {
+      colors: {
+        white: '#FFFFFF',
+        template: colors.slate['900'],
+        icon: colors.slate['900'],
+        'base-color': colors.slate['700'],
+      },
       flexGrow: {
         2: '2',
       },
@@ -36,6 +36,6 @@ module.exports = {
       },
     },
   },
-  safelist: ['text-white'],
+  safelist: ['text-white', ''],
   plugins: [require('@tailwindcss/typography')],
 }

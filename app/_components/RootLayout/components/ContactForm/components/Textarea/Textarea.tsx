@@ -14,7 +14,7 @@ const Textarea: FC<Props> = ({name, label = undefined, required = undefined}) =>
     <div className="mb-4">
       {label && <label htmlFor={name}>{label}</label>}
       <textarea
-        {...register(name)}
+        {...register(name, {required})}
         id={name}
         className="rounded border-2 border-slate-300 p-3 bg-white block w-full"
         required={required}

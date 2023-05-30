@@ -10,6 +10,7 @@ export enum ButtonType {
 
 export enum ButtonStyle {
   Primary = 'Primary',
+  Danger = 'Danger',
   Outline = 'Outline',
   White = 'White',
 }
@@ -26,6 +27,7 @@ export enum ButtonDisplay {
 
 interface Props {
   children?: ReactNode
+  disabled?: boolean
   href?: string
   buttonSize?: ButtonSize
   buttonStyle?: ButtonStyle
@@ -37,6 +39,7 @@ interface Props {
 
 const Button: FC<Props> = ({
   children = undefined,
+  disabled = undefined,
   href = '#',
   buttonSize = ButtonSize.Default,
   buttonStyle = ButtonStyle.Outline,
@@ -65,6 +68,13 @@ const Button: FC<Props> = ({
       'text-white',
       'hover:border-blue-900',
     ],
+    buttonStyle === ButtonStyle.Danger && [
+      'bg-red',
+      'text-white',
+      'border-red',
+      'hover:bg-red-800',
+      'hover:border-red-800',
+    ],
     buttonStyle === ButtonStyle.White && [
       'text-[var(--primary-color)]',
       'bg-white',
@@ -75,7 +85,8 @@ const Button: FC<Props> = ({
     buttonSize === ButtonSize.Default && ['px-6', 'py-2', 'text-base'],
     buttonSize === ButtonSize.Small && ['px-4', 'py-2', 'text-sm'],
     buttonDisplay === ButtonDisplay.InlineBlock && 'inline-block',
-    buttonDisplay === ButtonDisplay.Block && 'block'
+    buttonDisplay === ButtonDisplay.Block && 'block',
+    disabled && ['opacity-30', 'cursor-not-allowed']
   )
 
   if (type === ButtonType.Link) {
@@ -91,7 +102,7 @@ const Button: FC<Props> = ({
     )
   } else {
     return (
-      <button className={classNames} type={type}>
+      <button className={classNames} disabled={disabled} type={type}>
         {children}
       </button>
     )

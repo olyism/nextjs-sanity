@@ -8,10 +8,7 @@ interface Props {
 
 const Phone: FC<Props> = ({tel}) =>
   tel ? (
-    <address
-      className="py-1 text-sm text-right text-gray-600 not-italic hidden md:block"
-      style={{backgroundColor: '#e5e7eb'}}
-    >
+    <address className="py-1 text-sm bg-gray-100 text-right text-gray-600 not-italic hidden md:block">
       <Container>
         <a className="inline-flex items-center gap-1" href={`tel:${tel}`}>
           <HiPhone className="h-3 w-3" />
