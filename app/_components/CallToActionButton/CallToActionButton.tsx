@@ -13,9 +13,9 @@ const CallToActionButton: FC<Props> = ({
   buttonDisplay = undefined,
   buttonStyle = undefined,
 }) => {
-  const {buttonLabel, jumpToContactForm, goTo} = cta ?? {}
+  const {buttonLabel, jumpToContactForm, goTo} = cta
 
-  const to = jumpToContactForm ? '/#contact' : goTo ?? ''
+  const to = jumpToContactForm ? '/#contact' : goTo?.current ?? ''
 
   return (
     <Button

@@ -11,14 +11,14 @@ interface Props {
   title?: string | null
   description?: string | null
   image?: SanityImageSource | null
-  cta?: CallToAction
+  cta: CallToAction
 }
 
 const HeroBanner: FC<Props> = ({
   title = undefined,
   description = undefined,
   image = undefined,
-  cta = null,
+  cta,
 }) => {
   const bgStyles = image
     ? {

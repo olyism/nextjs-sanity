@@ -9,7 +9,7 @@ import './globals.css'
 const data = getData()
 
 export async function generateMetadata() {
-  const {title, description} = await data
+  const {title, description} = (await data) || {}
 
   return {
     title,
@@ -18,14 +18,38 @@ export async function generateMetadata() {
 }
 
 const RootLayout = async ({children}: {children: ReactNode}) => {
-  const {logo, styles, nav: navData, cta, tel, email} = await data
+  const settingsData = await data
+
+  if (!settingsData) {
+    return (
+      <html>
+        <body>
+          <p>Website error. Please contact admin@dplgroup.com.au for assistance.</p>
+        </body>
+      </html>
+    )
+  }
+
+  const {
+    logo,
+    styles: {primaryColor, brandColor, systemFont, headingFont},
+    nav,
+    cta,
+    tel,
+    email,
+  } = settingsData
 
   return (
     <html className="scroll-pt-header scroll-smooth" lang="en">
       <body className="bg-gray-100 font-system">
-        <Styles styles={styles} />
+        <Styles
+          primaryColor={primaryColor}
+          brandColor={brandColor}
+          systemFont={systemFont}
+          headingFont={headingFont}
+        />
         <div className="mx-auto max-w-screen-2xl min-h-screen flex flex-col bg-white drop-shadow-2xl relative">
-          <Navigation logo={logo} navData={navData} cta={cta} tel={tel} />
+          <Navigation logo={logo} nav={nav} cta={cta} tel={tel} />
           <main className="grow">{children}</main>
           <ContactForm email={email} tel={tel} />
           <Footer />

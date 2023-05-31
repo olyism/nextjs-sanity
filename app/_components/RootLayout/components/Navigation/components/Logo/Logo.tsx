@@ -1,27 +1,18 @@
 import {type FC} from 'react'
 import Image from 'next/image'
+import type {LogoProps} from '@/app/_components/RootLayout/getData'
 
-interface Props {
-  logo: {
-    src: string | null
-    width: number | null
-    height: number | null
-  } | null
-}
-
-const Logo: FC<Props> = ({logo}) => {
-  if (logo) {
-    if (logo?.src && logo?.width && logo?.height) {
-      return (
-        <Image
-          className="max-h-logo h-auto w-auto"
-          alt="Logo of DPL Group"
-          src={logo?.src}
-          height={logo?.height}
-          width={logo?.width}
-        />
-      )
-    }
+const Logo: FC<LogoProps> = ({src, height, width}) => {
+  if (src && height && width) {
+    return (
+      <Image
+        className="max-h-logo h-auto w-auto"
+        alt="Logo of DPL Group"
+        src={src}
+        height={height}
+        width={width}
+      />
+    )
   }
 
   return (

@@ -1,12 +1,12 @@
 import type SanitySlug from '@/types/SanitySlug'
-import {NavType} from '@/types/Nav'
+import {NavType} from '@/app/_components/RootLayout/getData'
 
 const getNavHref = (slug: SanitySlug | null, navType: NavType | null): string => {
-  if (navType === NavType.contentBlock) {
+  if (navType === NavType.ContentBlock) {
     return `/#${slug?.current}`
   }
 
-  if (navType === NavType.page) {
+  if (navType === NavType.Page) {
     return `/${slug?.current}`
   }
 

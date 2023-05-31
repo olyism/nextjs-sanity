@@ -93,7 +93,6 @@ export default {
       fields: [
         {
           name: 'buttonLabel',
-          title: 'Button label',
           type: 'string',
         },
         {

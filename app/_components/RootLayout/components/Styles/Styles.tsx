@@ -1,27 +1,21 @@
 import type {FC} from 'react'
+import type {StylesProps} from '@/app/_components/RootLayout/getData'
 import LinkGoogleFonts from './components/LinkGoogleFonts'
 import getGoogleFontCSSValue from './getGoogleFontCSSValue'
-
-interface Props {
-  styles: {
-    primaryColor: string | null
-    brandColor: string | null
-    systemFont: string | null
-    headingFont: string | null
-  } | null
-}
 
 const fallbackFonts =
   '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol'
 
-const Styles: FC<Props> = ({styles}) => {
-  const {primaryColor, brandColor, systemFont, headingFont} = styles ?? {}
-
-  return (
-    <>
-      <LinkGoogleFonts systemFont={systemFont} headingFont={headingFont} />
-      <style>
-        {`
+const Styles: FC<StylesProps> = ({
+  primaryColor = undefined,
+  brandColor = undefined,
+  systemFont = undefined,
+  headingFont = undefined,
+}) => (
+  <>
+    <LinkGoogleFonts systemFont={systemFont} headingFont={headingFont} />
+    <style>
+      {`
           :root {
             --primary-color: ${primaryColor || '#46108a'};
             --brand-color: ${brandColor || '#46108a'};
@@ -29,9 +23,8 @@ const Styles: FC<Props> = ({styles}) => {
             --heading-font: ${headingFont ? getGoogleFontCSSValue(headingFont) : fallbackFonts};
           }
         `}
-      </style>
-    </>
-  )
-}
+    </style>
+  </>
+)
 
 export default Styles
