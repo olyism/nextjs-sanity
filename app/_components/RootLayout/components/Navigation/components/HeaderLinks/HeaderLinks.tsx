@@ -1,24 +1,25 @@
 import {FC} from 'react'
-import CallToAction from 'types/CallToAction'
-import Nav, {NavItem} from '@/types/Nav'
-import Button, {ButtonType, ButtonSize} from '@/components/Button'
-import NavLink from './components/NavLink'
+import type CallToAction from 'types/CallToAction'
+import type {NavItemProps} from '@/app/_components/RootLayout/getData'
 import getNavHref from '@/lib/getNavHref'
+import {ButtonStyle} from '@/components/Button'
+import NavLink from './components/NavLink'
+import CallToActionButton from '@/app/_components/CallToActionButton'
 
 interface Props {
-  navData?: Nav | null
+  nav: NavItemProps[]
   cta: CallToAction
   currentPath?: string | null
 }
 
-const HeaderLinks: FC<Props> = ({navData = [], cta, currentPath = undefined}) => (
+const HeaderLinks: FC<Props> = ({nav, cta, currentPath = undefined}) => (
   <nav className="hidden md:block">
     <ul className="flex gap-1 items-center">
       <li>
         <NavLink name="Home" href="/" currentPath={currentPath} />
       </li>
-      {navData &&
-        navData.map((navItem: NavItem) => {
+      {nav &&
+        nav.map((navItem: NavItemProps) => {
           const {_id, _type, name, slug} = navItem
 
           return (
@@ -30,13 +31,9 @@ const HeaderLinks: FC<Props> = ({navData = [], cta, currentPath = undefined}) =>
             )
           )
         })}
-      {cta?.buttonLabel && cta?.goTo && (
-        <li>
-          <Button href={cta.goTo} buttonType={ButtonType.Primary} buttonSize={ButtonSize.Small}>
-            {cta.buttonLabel}
-          </Button>
-        </li>
-      )}
+      <li>
+        <CallToActionButton buttonStyle={ButtonStyle.Primary} cta={cta} />
+      </li>
     </ul>
   </nav>
 )

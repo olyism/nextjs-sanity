@@ -1,55 +1,62 @@
 import {FC} from 'react'
 import cn from 'classnames'
 import type {SanityImageSource} from '@sanity/image-url/lib/types/types'
-import Button, {ButtonType} from '@/components/Button'
+import type {CallToAction} from '@/types/CallToAction'
+import urlFor from '@/lib/urlFor'
+import {ButtonStyle} from '@/components/Button'
+import CallToActionButton from '@/app/_components/CallToActionButton'
 import Container from '@/components/Container'
-import BackgroundImage from './components/BackgroundImage'
 
 interface Props {
-  hero: {
-    title: string | null
-    description: string | null
-    image: SanityImageSource | null
-    button: {
-      label: string | null
-      link: string | null
-    } | null
-  } | null
+  title?: string | null
+  description?: string | null
+  image?: SanityImageSource | null
+  cta: CallToAction
 }
 
-const HeroBanner: FC<Props> = ({hero}) => {
-  if (!hero) return null
-
-  const {title, description, image, button} = hero
+const HeroBanner: FC<Props> = ({
+  title = undefined,
+  description = undefined,
+  image = undefined,
+  cta,
+}) => {
+  const bgStyles = image
+    ? {
+        backgroundImage: `url('${urlFor(image).width(1240).url()}')`,
+      }
+    : undefined
 
   return (
-    <header className={cn(['py-4', 'relative'], ['sm:py-8', 'sm:min-h-[400px]'])}>
-      <Container className="relative z-10 mt-[168px] sm:mt-0">
+    <header
+      className={cn(
+        ['py-8', 'sm:py-12'],
+        ['min-h-[calc(100vh-theme(height.header))]', 'sm:min-h-[500px]'],
+        ['flex', 'items-center', 'sm:block'],
+        ['bg-cover', 'bg-fixed', 'bg-center']
+      )}
+      style={bgStyles}
+    >
+      <Container className="w-full">
         <article
           className={cn(
             'p-6',
             'sm:p-8',
             'sm:max-w-md',
-            'bg-white',
+            'bg-white/90',
             'text-base-color',
             'rounded',
-            'drop-shadow-md'
+            'drop-shadow-lg'
           )}
         >
           {title && (
-            <h1 className="mb-3 font-display font-bold text-template text-3xl sm:text-4xl">
+            <h1 className="mb-3 font-heading font-bold text-template text-3xl sm:text-4xl">
               {title}
             </h1>
           )}
           {description && <p className="mb-4 mt-3 sm:text-lg">{description}</p>}
-          {button && (
-            <Button href={`/${button.link}`} buttonType={ButtonType.Primary}>
-              {button.label}
-            </Button>
-          )}
+          <CallToActionButton cta={cta} buttonStyle={ButtonStyle.Primary} />
         </article>
       </Container>
-      {image && <BackgroundImage image={image} title={title} />}
     </header>
   )
 }

@@ -1,24 +1,45 @@
 import client from '@/lib/client'
+import type {SanityImageSource} from '@sanity/image-url/lib/types/types'
+import CallToAction from '@/types/CallToAction'
+import ContentBlock from '@/types/ContentBlock'
 
-const getData = async () => {
+export type HomepageSettings = {
+  title: string | null
+  hero: {
+    title?: string | null
+    description?: string | null
+    image?: SanityImageSource | null
+    cta: CallToAction
+  }
+  contentBlocks: ContentBlock[]
+}
+
+const getData = async (): Promise<HomepageSettings> => {
   const data = await client.fetch(`
-    *[_type == 'homepage']{
+    *[_id == 'homepageSettings']{
       title,
-      hero{
+      "hero": coalesce(hero{
         title,
         description,
         image,
-        "button": {
-          "label": buttonGroup.label,
-          "link": buttonGroup.link->slug.current
-        }
-      },
+        "cta": coalesce(cta{
+          buttonLabel,
+          jumpToContactForm,
+          "goTo": goTo->slug
+        }, {}),
+      }, {}),
       contentBlocks[]->{
         _id,
         name,
         content,
-        "slug": slug.current
-      }
+        "slug": slug.current,
+        featuredImage{
+          "alt": image.alt,
+          "src": image.asset->url,
+          align,
+          pos,
+        },
+      },
     }[0]
   `)
 

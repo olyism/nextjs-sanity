@@ -5,6 +5,12 @@ export default {
   name: 'contentBlock',
   type: 'document',
   title: 'Content Block',
+  initialValue: {
+    featuredImage: {
+      pos: 'Center',
+      align: 'Left',
+    },
+  },
   fields: [
     {
       name: 'name',
@@ -38,6 +44,46 @@ export default {
               title: 'Image alt text',
             },
           ],
+        },
+      ],
+    },
+    {
+      name: 'featuredImage',
+      title: 'Featured image',
+      type: 'object',
+      options: {
+        collapsible: true,
+      },
+      fields: [
+        {
+          name: 'image',
+          title: 'Image',
+          type: 'image',
+          fields: [
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Image alt text',
+            },
+          ],
+        },
+        {
+          name: 'pos',
+          title: 'Image position',
+          type: 'string',
+          options: {
+            list: ['Top', 'Right', 'Bottom', 'Left', 'Center'],
+          },
+        },
+        {
+          name: 'align',
+          title: 'Alignment',
+          type: 'string',
+          options: {
+            list: ['Left', 'Right'],
+            layout: 'radio',
+            direction: 'horizontal',
+          },
         },
       ],
     },

@@ -1,3 +1,5 @@
+import GoogleFontSelector from './components/GoogleFontSelector'
+
 export default {
   name: 'settings',
   type: 'document',
@@ -15,7 +17,59 @@ export default {
     },
     {
       name: 'logo',
-      type: 'image',
+      type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+      fields: [
+        {
+          name: 'src',
+          type: 'image',
+        },
+        {
+          name: 'width',
+          type: 'number',
+        },
+        {
+          name: 'height',
+          type: 'number',
+        },
+      ],
+    },
+    {
+      name: 'styles',
+      type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+      fields: [
+        {
+          name: 'brandColor',
+          type: 'color',
+          title: 'Brand color',
+        },
+        {
+          name: 'primaryColor',
+          type: 'color',
+          title: 'Primary color',
+        },
+        {
+          name: 'systemFont',
+          type: 'string',
+          components: {
+            input: GoogleFontSelector,
+          },
+        },
+        {
+          name: 'headingFont',
+          type: 'string',
+          components: {
+            input: GoogleFontSelector,
+          },
+        },
+      ],
     },
     {
       name: 'nav',
@@ -32,16 +86,25 @@ export default {
       name: 'cta',
       title: 'Call to action',
       type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
       fields: [
         {
           name: 'buttonLabel',
-          title: 'Button label',
           type: 'string',
+        },
+        {
+          name: 'jumpToContactForm',
+          type: 'boolean',
         },
         {
           name: 'goTo',
           type: 'reference',
-          to: [{type: 'page'}],
+          to: [{type: 'page'}, {type: 'contentBlock'}],
+          // @ts-ignore
+          hidden: ({document}) => document?.cta?.jumpToContactForm,
         },
       ],
     },

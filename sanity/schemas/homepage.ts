@@ -12,6 +12,10 @@ export default {
       name: 'hero',
       title: 'Hero banner',
       type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
       fields: [
         {
           name: 'title',
@@ -22,17 +26,28 @@ export default {
           type: 'string',
         },
         {
-          name: 'buttonGroup',
+          name: 'cta',
+          title: 'Call-to-action button',
           type: 'object',
+          options: {
+            collapsible: true,
+            collapsed: true,
+          },
           fields: [
             {
-              name: 'label',
+              name: 'buttonLabel',
               type: 'string',
             },
             {
-              name: 'link',
+              name: 'jumpToContactForm',
+              type: 'boolean',
+            },
+            {
+              name: 'goTo',
               type: 'reference',
               to: [{type: 'page'}, {type: 'contentBlock'}],
+              // @ts-ignore
+              hidden: ({document}) => document?.hero?.cta?.jumpToContactForm,
             },
           ],
         },

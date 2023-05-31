@@ -5,19 +5,21 @@ import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import {HiBars2, HiXMark, HiPhone} from 'react-icons/hi2'
 import type CallToAction from '@/types/CallToAction'
-import type Nav from '@/types/Nav'
+import type {NavItemProps, LogoProps} from '@/app/_components/RootLayout/getData'
 import Container from '@/components/Container'
-import Logo from '@/components/Logo'
-import MobileMenu from './components/MobileMenu'
 import HeaderLinks from './components/HeaderLinks'
+import Logo from './components/Logo'
+import MobileMenu from './components/MobileMenu'
+import Phone from './components/Phone'
 
 interface Props {
-  navData?: Nav | null
+  logo: LogoProps
+  nav: NavItemProps[]
   cta: CallToAction
   tel: string | null
 }
 
-const Navigation: FC<Props> = ({navData = [], cta, tel}) => {
+const Navigation: FC<Props> = ({logo: {src, width, height}, nav, cta, tel}) => {
   const [isMobileMenuShown, setIsMobileMenuShown] = useState(false)
   const pathname = usePathname()
 
@@ -27,21 +29,12 @@ const Navigation: FC<Props> = ({navData = [], cta, tel}) => {
 
   return (
     <>
-      {tel && (
-        <address className="py-1 text-sm text-right not-italic bg-cobalt-100 hidden md:block">
-          <Container>
-            <a className="inline-flex items-center gap-1" href={`tel:${tel}`}>
-              <HiPhone className="h-3 w-3" />
-              {tel}
-            </a>
-          </Container>
-        </address>
-      )}
-      <header className="bg-white drop-shadow-sm">
+      <Phone tel={tel} />
+      <header className="bg-white drop-shadow-sm sticky top-0 z-20 h-header">
         <Container>
           <div className="flex justify-between items-center py-2">
             <Link href="/">
-              <Logo />
+              <Logo src={src} width={width} height={height} />
             </Link>
             <div className="flex items-center gap-6 md:hidden">
               {tel && (
@@ -57,11 +50,11 @@ const Navigation: FC<Props> = ({navData = [], cta, tel}) => {
                 )}
               </button>
             </div>
-            <HeaderLinks navData={navData} cta={cta} currentPath={pathname} />
+            <HeaderLinks nav={nav} cta={cta} currentPath={pathname} />
           </div>
         </Container>
       </header>
-      {isMobileMenuShown && <MobileMenu navData={navData} cta={cta} currentPath={pathname} />}
+      {isMobileMenuShown && <MobileMenu nav={nav} cta={cta} currentPath={pathname} />}
     </>
   )
 }

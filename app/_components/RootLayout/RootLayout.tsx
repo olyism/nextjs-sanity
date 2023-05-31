@@ -1,19 +1,16 @@
-import {ReactNode} from 'react'
-import {Open_Sans} from 'next/font/google'
-import getSettingsData from './getSettingsData'
+import type {ReactNode} from 'react'
+import ContactForm from './components/ContactForm'
 import Footer from './components/Footer'
 import Navigation from './components/Navigation'
+import Styles from './components/Styles'
+import getData from './getData'
 import './globals.css'
 
-const openSans = Open_Sans({
-  subsets: ['latin'],
-  variable: '--open-sans-font',
-})
-
-const settingsData = getSettingsData()
+const data = getData()
 
 export async function generateMetadata() {
-  const {title, description} = await settingsData
+  const {title, description} = (await data) || {}
+
   return {
     title,
     description,
@@ -21,14 +18,40 @@ export async function generateMetadata() {
 }
 
 const RootLayout = async ({children}: {children: ReactNode}) => {
-  const {nav: navData, cta, tel} = await settingsData
+  const settingsData = await data
+
+  if (!settingsData) {
+    return (
+      <html>
+        <body>
+          <p>Website error. Please contact admin@dplgroup.com.au for assistance.</p>
+        </body>
+      </html>
+    )
+  }
+
+  const {
+    logo,
+    styles: {primaryColor, brandColor, systemFont, headingFont},
+    nav,
+    cta,
+    tel,
+    email,
+  } = settingsData
 
   return (
-    <html lang="en">
-      <body className={`bg-cobalt-100 ${openSans.variable}`}>
-        <div className="mx-auto max-w-screen-2xl min-h-screen flex flex-col bg-white drop-shadow-2xl">
-          <Navigation navData={navData} cta={cta} tel={tel} />
+    <html className="scroll-pt-header scroll-smooth" lang="en">
+      <body className="bg-gray-100 font-system">
+        <Styles
+          primaryColor={primaryColor}
+          brandColor={brandColor}
+          systemFont={systemFont}
+          headingFont={headingFont}
+        />
+        <div className="mx-auto max-w-screen-2xl min-h-screen flex flex-col bg-white drop-shadow-2xl relative">
+          <Navigation logo={logo} nav={nav} cta={cta} tel={tel} />
           <main className="grow">{children}</main>
+          <ContactForm email={email} tel={tel} />
           <Footer />
         </div>
       </body>
