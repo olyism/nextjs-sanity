@@ -5,9 +5,10 @@ import ContentBlockProps from '@/types/ContentBlock'
 import ImageComponent from '@/components/ImageComponent'
 import FeaturedImage from './components/FeaturedImage'
 
-interface Props extends Omit<ContentBlockProps, '_id' | 'name' | 'slug'> {}
-
-const ContentBlock: FC<Props> = ({content, featuredImage}) => {
+const ContentBlock: FC<Omit<ContentBlockProps, '_id' | 'name' | 'slug'>> = ({
+  content,
+  featuredImage,
+}) => {
   const components = {
     types: {
       image: ImageComponent,
