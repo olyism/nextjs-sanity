@@ -2,8 +2,8 @@ import {defineConfig} from 'sanity'
 import {colorInput} from '@sanity/color-input'
 import {visionTool} from '@sanity/vision'
 import {deskTool} from 'sanity/desk'
-import {schemaTypes} from './sanity/schemas'
-import deskStructure from './sanity/plugins/deskStructure'
+import {schemaTypes} from '@/sanity/schemas'
+import deskStructure from '@/sanity/plugins/deskStructure'
 
 export default defineConfig({
   name: 'default',
