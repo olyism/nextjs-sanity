@@ -1,7 +1,7 @@
 import type {Rule} from 'sanity'
 import GoogleFontSelector from './components/GoogleFontSelector'
 
-export default {
+const settings = {
   name: 'settings',
   type: 'document',
   title: 'Settings',
@@ -161,3 +161,5 @@ export default {
     },
   },
 }
+
+export default settings

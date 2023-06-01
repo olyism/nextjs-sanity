@@ -1,7 +1,7 @@
 import type {Rule} from 'sanity'
 import slugify from '@/lib/slugify'
 
-export default {
+const contentBlock = {
   name: 'contentBlock',
   type: 'document',
   title: 'Content Block',
@@ -99,3 +99,5 @@ export default {
     },
   ],
 }
+
+export default contentBlock

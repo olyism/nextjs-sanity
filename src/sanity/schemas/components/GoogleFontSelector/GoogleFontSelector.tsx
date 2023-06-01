@@ -5,12 +5,10 @@ import {useFetch} from 'usehooks-ts'
 import {Select, Card, Spinner, Text} from '@sanity/ui'
 import {GOOGLE_FONT_API_KEY} from '@/sanity/environment'
 
-interface Props extends StringInputProps {}
-
 const url = `https://www.googleapis.com/webfonts/v1/webfonts?key=${GOOGLE_FONT_API_KEY}`
 const cardProps = {shadow: 1, padding: 3, radius: 2}
 
-const GoogleFontSelector: FC<Props> = ({onChange, value}) => {
+const GoogleFontSelector: FC<StringInputProps> = ({onChange, value}) => {
   const {data, error} = useFetch<any[]>(url)
 
   const handleChange = useCallback(

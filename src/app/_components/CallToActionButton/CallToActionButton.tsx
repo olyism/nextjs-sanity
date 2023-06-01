@@ -1,5 +1,5 @@
 import type {FC} from 'react'
-import CallToAction from 'types/CallToAction'
+import CallToAction from '@/types/CallToAction'
 import Button, {ButtonDisplay, ButtonSize, ButtonStyle} from '@/components/Button'
 
 interface Props {

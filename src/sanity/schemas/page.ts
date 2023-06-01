@@ -1,7 +1,7 @@
 import type {Rule} from 'sanity'
 import slugify from '@/lib/slugify'
 
-export default {
+const page = {
   name: 'page',
   type: 'document',
   title: 'Page',
@@ -48,3 +48,5 @@ export default {
     },
   ],
 }
+
+export default page
