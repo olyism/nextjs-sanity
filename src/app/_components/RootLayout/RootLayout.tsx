@@ -1,6 +1,5 @@
 import type {ReactNode} from 'react'
-import ContactForm from './components/ContactForm'
-import Footer from './components/Footer'
+import Bottom from './components/Bottom'
 import Navigation from './components/Navigation'
 import Phone from './components/Phone'
 import Styles from './components/Styles'
@@ -38,6 +37,7 @@ const RootLayout = async ({children}: {children: ReactNode}) => {
     cta,
     tel,
     email,
+    footerImage,
   } = settingsData
 
   return (
@@ -53,8 +53,7 @@ const RootLayout = async ({children}: {children: ReactNode}) => {
         <div className="mx-auto max-w-screen-2xl min-h-screen flex flex-col bg-white drop-shadow-2xl relative">
           <Navigation logo={logo} nav={nav} cta={cta} tel={tel} />
           <main className="grow">{children}</main>
-          <ContactForm email={email} tel={tel} />
-          <Footer />
+          <Bottom email={email} tel={tel} footerImage={footerImage} />
         </div>
       </body>
     </html>

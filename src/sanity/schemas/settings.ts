@@ -1,3 +1,4 @@
+import type {Rule} from 'sanity'
 import GoogleFontSelector from './components/GoogleFontSelector'
 
 export default {
@@ -137,5 +138,26 @@ export default {
       type: 'array',
       of: [{type: 'block'}],
     },
+    {
+      name: 'footerImage',
+      type: 'object',
+      fields: [
+        {
+          name: 'src',
+          title: 'Image',
+          type: 'image',
+        },
+        {
+          name: 'opacity',
+          type: 'number',
+          validation: (Rule: Rule) => Rule.min(0).max(100),
+        },
+      ],
+    },
   ],
+  initialValue: {
+    footerImage: {
+      opacity: 20,
+    },
+  },
 }

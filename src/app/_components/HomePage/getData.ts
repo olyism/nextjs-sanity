@@ -1,5 +1,5 @@
-import client from '@/lib/client'
 import type {SanityImageSource} from '@sanity/image-url/lib/types/types'
+import client from '@/lib/client'
 import CallToAction from '@/types/CallToAction'
 import ContentBlock from '@/types/ContentBlock'
 

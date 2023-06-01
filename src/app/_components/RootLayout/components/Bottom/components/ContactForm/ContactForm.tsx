@@ -2,6 +2,7 @@
 
 import {type FC, useState} from 'react'
 import {useForm, FormProvider} from 'react-hook-form'
+import cn from 'classnames'
 import Container, {ContainerWidth} from '@/components/Container'
 import TextInput, {TextInputType} from './components/TextInput'
 import Textarea from './components/Textarea'
@@ -66,11 +67,20 @@ const ContactForm: FC<Props> = ({email, tel}) => {
   }
 
   return (
-    <section id="contact">
-      {isSubmitting && 'isSubmitting'}
+    <section className="py-16 relative z-10" id="contact">
       <Container maxWidth={ContainerWidth.Prose}>
         <FormProvider {...methods}>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form
+            className={cn(
+              'p-6',
+              'sm:p-8',
+              'bg-white/90',
+              'text-base-color',
+              'rounded',
+              'drop-shadow-lg'
+            )}
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <h2 className="font-heading text-3xl font-bold my-4">Get in touch</h2>
             <Summary tel={tel} email={email} />
             <input

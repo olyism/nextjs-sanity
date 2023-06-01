@@ -27,6 +27,11 @@ export type StylesProps = {
   headingFont?: string
 }
 
+export type FooterImageProps = {
+  src?: string | null
+  opacity?: number
+}
+
 export type Settings = {
   title: string | null
   description: string | null
@@ -36,6 +41,7 @@ export type Settings = {
   cta: CallToAction
   tel: string | null
   email: string | null
+  footerImage: FooterImageProps
 } | null
 
 const getData = async (): Promise<Settings> => {
@@ -64,6 +70,10 @@ const getData = async (): Promise<Settings> => {
       }, {}),
       "tel": contact.tel,
       "email": contact.email,
+      "footerImage": coalesce(footerImage{
+        "src": src.asset->url,
+        opacity,
+      }, {}),
     }[0]
   `)
 

@@ -16,13 +16,13 @@ const Styles: FC<StylesProps> = ({
     <LinkGoogleFonts systemFont={systemFont} headingFont={headingFont} />
     <style>
       {`
-          :root {
-            --primary-color: ${primaryColor || '#46108a'};
-            --brand-color: ${brandColor || '#46108a'};
-            --system-font: ${systemFont ? getGoogleFontCSSValue(systemFont) : fallbackFonts};
-            --heading-font: ${headingFont ? getGoogleFontCSSValue(headingFont) : fallbackFonts};
-          }
-        `}
+        :root {
+          --primary-color: ${primaryColor || '#46108a'};
+          --brand-color: ${brandColor || '#46108a'};
+          --system-font: ${systemFont ? getGoogleFontCSSValue(systemFont) : fallbackFonts};
+          --heading-font: ${headingFont ? getGoogleFontCSSValue(headingFont) : fallbackFonts};
+        }
+      `}
     </style>
   </>
 )
