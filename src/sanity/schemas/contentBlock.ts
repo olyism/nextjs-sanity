@@ -72,7 +72,17 @@ export default {
           title: 'Image position',
           type: 'string',
           options: {
-            list: ['Top', 'Right', 'Bottom', 'Left', 'Center'],
+            list: [
+              'Top',
+              'RightTop',
+              'Right',
+              'Rightbottom',
+              'Bottom',
+              'LeftBottom',
+              'Left',
+              'LeftTop',
+              'Center',
+            ],
           },
         },
         {

@@ -16,7 +16,8 @@ const FeaturedImage: FC<FeaturedImageProps> = ({alt, src, align, pos}) => {
       aria-label={alt}
       className={cn(
         ['flex-1', 'relative', 'bg-gray', 'bg-cover', 'rounded'],
-        ['before:pt-[66%]', 'before:w-full', 'before:block'],
+        ['before:pt-[66%]', 'sm:before:pt-[100%]'],
+        ['before:w-full', 'before:block'],
         align === FeaturedImageAlignment.Right ? 'sm:order-3' : 'sm:order-1',
         pos && getBgPosCSSClass(pos)
       )}

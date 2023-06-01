@@ -20,7 +20,9 @@ const ContentBlock: FC<Omit<ContentBlockProps, '_id' | 'name' | 'slug'>> = ({
   const hasFeaturedImage = alt && src
 
   return (
-    <article className={cn(hasFeaturedImage && 'flex flex-col sm:flex-row gap-4 sm:gap-6')}>
+    <article
+      className={cn(hasFeaturedImage && 'flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6')}
+    >
       {/* @ts-ignore */}
       {hasFeaturedImage && <FeaturedImage src={src} alt={alt} align={align} pos={pos} />}
       {content && (
