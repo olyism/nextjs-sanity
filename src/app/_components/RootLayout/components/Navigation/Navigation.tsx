@@ -11,7 +11,6 @@ import Container from '@/components/Container'
 import HeaderLinks from './components/HeaderLinks'
 import Logo from './components/Logo'
 import MobileMenu from './components/MobileMenu'
-import Phone from './components/Phone'
 
 interface Props {
   logo: LogoProps
@@ -30,7 +29,6 @@ const Navigation: FC<Props> = ({logo: {src, width, height}, nav, cta, tel}) => {
 
   return (
     <>
-      <Phone tel={tel} />
       <header className={cn('bg-white', 'drop-shadow-sm', !isMobileMenuShown && 'h-header')}>
         <Container>
           <div className="flex justify-between items-center py-2">
