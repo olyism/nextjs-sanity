@@ -40,7 +40,7 @@ const RootLayout = async ({children}: {children: ReactNode}) => {
   } = settingsData
 
   return (
-    <html className="scroll-pt-header scroll-smooth" lang="en">
+    <html className="scroll-smooth" lang="en">
       <body className="bg-gray-100 font-system">
         <Styles
           primaryColor={primaryColor}

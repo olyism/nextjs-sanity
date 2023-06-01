@@ -27,9 +27,6 @@ module.exports = {
       maxHeight: {
         logo: '40px',
       },
-      scrollPadding: {
-        header: headerHeight,
-      },
     },
   },
   safelist: ['text-white', ''],

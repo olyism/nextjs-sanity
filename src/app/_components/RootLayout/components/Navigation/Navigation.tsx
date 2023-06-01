@@ -4,6 +4,7 @@ import {type FC, useState, useEffect} from 'react'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import {HiBars2, HiXMark, HiPhone} from 'react-icons/hi2'
+import cn from 'classnames'
 import type CallToAction from '@/types/CallToAction'
 import type {NavItemProps, LogoProps} from '@/app/_components/RootLayout/getData'
 import Container from '@/components/Container'
@@ -30,13 +31,13 @@ const Navigation: FC<Props> = ({logo: {src, width, height}, nav, cta, tel}) => {
   return (
     <>
       <Phone tel={tel} />
-      <header className="bg-white drop-shadow-sm sticky top-0 z-20 h-header">
+      <header className={cn('bg-white', 'drop-shadow-sm', !isMobileMenuShown && 'h-header')}>
         <Container>
           <div className="flex justify-between items-center py-2">
             <Link href="/">
               <Logo src={src} width={width} height={height} />
             </Link>
-            <div className="flex items-center gap-6 md:hidden">
+            <div className="flex items-center gap-6 lg:hidden">
               {tel && (
                 <a aria-hidden className="p-2" href={`tel:${tel}`}>
                   <HiPhone className="h-4 w-4" />

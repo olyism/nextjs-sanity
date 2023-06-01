@@ -2,10 +2,10 @@ import type {FC} from 'react'
 import cn from 'classnames'
 import getNavHref from '@/lib/getNavHref'
 import type CallToAction from '@/types/CallToAction'
-import type {NavItemProps} from '@/app/_components/RootLayout/getData'
 import {ButtonDisplay, ButtonStyle} from '@/components/Button'
-import NavLink from './components/NavLink'
+import {type NavItemProps} from '@/app/_components/RootLayout/getData'
 import CallToActionButton from '@/app/_components/CallToActionButton'
+import NavLink from './components/NavLink'
 
 interface Props {
   nav: NavItemProps[]
@@ -14,7 +14,7 @@ interface Props {
 }
 
 const MobileMenu: FC<Props> = ({nav, cta, currentPath = undefined}) => (
-  <nav aria-hidden className={cn('bg-template', 'px-2', 'py-2', 'md:hidden')}>
+  <nav aria-hidden className={cn('bg-template', 'px-2', 'py-2', 'lg:hidden')}>
     <ul>
       <li>
         <NavLink name="Home" href="/" currentPath={currentPath} />
@@ -26,7 +26,12 @@ const MobileMenu: FC<Props> = ({nav, cta, currentPath = undefined}) => (
           return (
             name && (
               <li className="mt-1" key={_id}>
-                <NavLink name={name} href={getNavHref(slug, _type)} currentPath={currentPath} />
+                <NavLink
+                  name={name}
+                  href={getNavHref(slug, _type)}
+                  currentPath={currentPath}
+                  navType={_type}
+                />
               </li>
             )
           )

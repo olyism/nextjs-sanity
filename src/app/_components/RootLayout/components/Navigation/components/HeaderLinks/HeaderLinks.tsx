@@ -1,5 +1,5 @@
 import {FC} from 'react'
-import type CallToAction from 'types/CallToAction'
+import type CallToAction from '@/types/CallToAction'
 import type {NavItemProps} from '@/app/_components/RootLayout/getData'
 import getNavHref from '@/lib/getNavHref'
 import {ButtonStyle} from '@/components/Button'
@@ -13,7 +13,7 @@ interface Props {
 }
 
 const HeaderLinks: FC<Props> = ({nav, cta, currentPath = undefined}) => (
-  <nav className="hidden md:block">
+  <nav className="hidden lg:block">
     <ul className="flex gap-1 items-center">
       <li>
         <NavLink name="Home" href="/" currentPath={currentPath} />
@@ -26,7 +26,12 @@ const HeaderLinks: FC<Props> = ({nav, cta, currentPath = undefined}) => (
             slug &&
             name && (
               <li key={_id}>
-                <NavLink name={name} href={getNavHref(slug, _type)} currentPath={currentPath} />
+                <NavLink
+                  name={name}
+                  href={getNavHref(slug, _type)}
+                  navType={_type}
+                  currentPath={currentPath}
+                />
               </li>
             )
           )
