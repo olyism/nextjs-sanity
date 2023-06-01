@@ -13,7 +13,7 @@ const SubmitButton: FC<Props> = ({isLoading, isSent, isError, isSubmitting, isVa
   switch (true) {
     case isSent:
       return (
-        <Button type={ButtonType.Button} buttonStyle={ButtonStyle.Primary}>
+        <Button type={ButtonType.Button} buttonStyle={ButtonStyle.Success} disabled>
           Sent
         </Button>
       )

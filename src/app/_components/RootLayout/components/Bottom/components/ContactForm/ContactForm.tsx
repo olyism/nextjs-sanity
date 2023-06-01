@@ -103,13 +103,13 @@ const ContactForm: FC<Props> = ({email, tel}) => {
               isValid={isValid}
             />
             {isError && (
-              <div className="p-4 bg-red-100 text-red rounded mt-6">
+              <div className="p-4 bg-red-100 border border-red text-red rounded mt-6">
                 Something went wrong and the contact form could not be sent. Please get in touch
                 directly with the contact details above.
               </div>
             )}
             {isSent && (
-              <div className="p-4 bg-green-100 rounded mt-6">
+              <div className="p-4 bg-green-100 border border-green rounded mt-6">
                 Your message has been sent. We&apos;ll reply to your email as soon as possible.
               </div>
             )}

@@ -3,13 +3,15 @@ import Link from 'next/link'
 import cn from 'classnames'
 
 export enum ButtonType {
-  Link = 'link',
-  Button = 'button',
-  Submit = 'submit',
+  Link = 'Link',
+  NextLink = 'NextLink',
+  Button = 'Button',
+  Submit = 'Submit',
 }
 
 export enum ButtonStyle {
   Primary = 'Primary',
+  Success = 'Success',
   Danger = 'Danger',
   Outline = 'Outline',
   White = 'White',
@@ -68,6 +70,13 @@ const Button: FC<Props> = ({
       'text-white',
       'hover:border-blue-900',
     ],
+    buttonStyle === ButtonStyle.Success && [
+      'bg-green',
+      'text-white',
+      'border-green',
+      'hover:bg-green-800',
+      'hover:border-green-800',
+    ],
     buttonStyle === ButtonStyle.Danger && [
       'bg-red',
       'text-white',
@@ -91,6 +100,12 @@ const Button: FC<Props> = ({
 
   if (type === ButtonType.Link) {
     return (
+      <a className={classNames} href={href} target={newWindow ? '_blank' : undefined} title={title}>
+        {children}
+      </a>
+    )
+  } else if (type === ButtonType.NextLink) {
+    return (
       <Link
         className={classNames}
         href={href}
@@ -100,13 +115,19 @@ const Button: FC<Props> = ({
         {children}
       </Link>
     )
-  } else {
+  } else if (type === ButtonType.Submit) {
     return (
-      <button className={classNames} disabled={disabled} type={type}>
+      <button className={classNames} disabled={disabled} type="submit">
         {children}
       </button>
     )
   }
+
+  return (
+    <button className={classNames} disabled={disabled} type="button">
+      {children}
+    </button>
+  )
 }
 
 export default Button
