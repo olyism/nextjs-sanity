@@ -36,7 +36,7 @@ const HeaderLinks: FC<Props> = ({nav, cta, currentPath = undefined}) => (
             )
           )
         })}
-      <li>
+      <li className="ml-3">
         <CallToActionButton buttonStyle={ButtonStyle.Primary} cta={cta} />
       </li>
     </ul>
