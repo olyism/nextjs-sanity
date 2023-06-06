@@ -1,3 +1,5 @@
+import type {Rule} from 'sanity'
+
 const homepage = {
   name: 'homepage',
   type: 'document',
@@ -11,49 +13,56 @@ const homepage = {
     {
       name: 'hero',
       title: 'Hero banner',
-      type: 'object',
-      options: {
-        collapsible: true,
-        collapsed: true,
-      },
-      fields: [
+      type: 'array',
+      of: [
         {
-          name: 'title',
-          type: 'string',
-        },
-        {
-          name: 'description',
-          type: 'string',
-        },
-        {
-          name: 'cta',
-          title: 'Call-to-action button',
+          name: 'banner',
           type: 'object',
-          options: {
-            collapsible: true,
-            collapsed: true,
-          },
           fields: [
             {
-              name: 'buttonLabel',
+              name: 'title',
               type: 'string',
             },
             {
-              name: 'jumpToContactForm',
-              type: 'boolean',
+              name: 'description',
+              type: 'string',
             },
             {
-              name: 'goTo',
-              type: 'reference',
-              to: [{type: 'page'}, {type: 'contentBlock'}],
-              // @ts-ignore
-              hidden: ({document}) => document?.hero?.cta?.jumpToContactForm,
+              name: 'cta',
+              title: 'Call-to-action button',
+              type: 'object',
+              options: {
+                collapsible: true,
+                collapsed: true,
+              },
+              fields: [
+                {
+                  name: 'buttonLabel',
+                  type: 'string',
+                },
+                {
+                  name: 'jumpToContactForm',
+                  type: 'boolean',
+                },
+                {
+                  name: 'goTo',
+                  type: 'reference',
+                  to: [{type: 'page'}, {type: 'contentBlock'}],
+                  // @ts-ignore
+                  hidden: ({document}) => document?.hero?.cta?.jumpToContactForm,
+                },
+              ],
+            },
+            {
+              name: 'image',
+              type: 'image',
+            },
+            {
+              name: 'overlay',
+              type: 'number',
+              validation: (Rule: Rule) => Rule.min(0).max(100),
             },
           ],
-        },
-        {
-          name: 'image',
-          type: 'image',
         },
       ],
     },

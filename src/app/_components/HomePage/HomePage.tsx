@@ -1,16 +1,13 @@
 import getData from './getData'
 import ContentBlocks from './components/ContentBlocks'
-import HeroBanner from './components/HeroBanner'
+import HeroBanners from './components/HeroBanners'
 
 const HomePage = async () => {
-  const {
-    hero: {title, description, image, cta},
-    contentBlocks,
-  } = await getData()
+  const {hero, contentBlocks} = await getData()
 
   return (
     <>
-      <HeroBanner title={title} description={description} image={image} cta={cta} />
+      <HeroBanners hero={hero} />
       <ContentBlocks contentBlocks={contentBlocks} />
     </>
   )

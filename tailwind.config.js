@@ -21,11 +21,17 @@ module.exports = {
       flexGrow: {
         2: '2',
       },
+      height: {
+        header: headerHeight,
+      },
       maxHeight: {
         logo: '40px',
       },
       minHeight: {
         header: headerHeight,
+      },
+      transitionProperty: {
+        left: 'left',
       },
     },
   },
