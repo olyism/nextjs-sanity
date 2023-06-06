@@ -23,6 +23,7 @@ const CallToActionButton: FC<Props> = ({
       buttonDisplay={buttonDisplay}
       buttonStyle={buttonStyle}
       buttonSize={ButtonSize.Small}
+      className="whitespace-nowrap"
     >
       {buttonLabel}
     </Button>

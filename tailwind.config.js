@@ -27,6 +27,12 @@ module.exports = {
       maxHeight: {
         logo: '40px',
       },
+      minHeight: {
+        header: headerHeight,
+      },
+      transitionProperty: {
+        left: 'left',
+      },
     },
   },
   safelist: ['text-white', ''],

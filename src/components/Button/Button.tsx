@@ -37,6 +37,7 @@ interface Props {
   title?: string
   newWindow?: boolean
   type?: ButtonType
+  className?: string
 }
 
 const Button: FC<Props> = ({
@@ -49,6 +50,7 @@ const Button: FC<Props> = ({
   title = undefined,
   newWindow = false,
   type = ButtonType.Link,
+  className = undefined,
 }) => {
   const classNames = cn(
     [
@@ -95,7 +97,8 @@ const Button: FC<Props> = ({
     buttonSize === ButtonSize.Small && ['px-4', 'py-2', 'text-sm'],
     buttonDisplay === ButtonDisplay.InlineBlock && 'inline-block',
     buttonDisplay === ButtonDisplay.Block && 'block',
-    disabled && ['opacity-30', 'cursor-not-allowed']
+    disabled && ['opacity-30', 'cursor-not-allowed'],
+    className
   )
 
   if (type === ButtonType.Link) {

@@ -12,7 +12,16 @@ interface Props {
 
 const NavLink: FC<Props> = ({name, href, currentPath = undefined, navType = undefined}) => {
   const classNames = cn(
-    ['px-4', 'py-3', 'text-sm', 'text-template', 'rounded', 'font-semibold'],
+    [
+      'px-4',
+      'py-3',
+      'text-[14px]',
+      'text-template',
+      'rounded',
+      'text-center',
+      'leading-tight',
+      'block',
+    ],
     currentPath === href
       ? [
           'cursor-default',
@@ -20,6 +29,7 @@ const NavLink: FC<Props> = ({name, href, currentPath = undefined, navType = unde
           'underline-offset-4',
           'decoration-[var(--primary-color)]',
           'decoration-2',
+          'font-semibold',
         ]
       : ['hover:bg-gray-50', 'hover:text-gray-800']
   )

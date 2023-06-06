@@ -1,25 +1,17 @@
-import {FC} from 'react'
+import type {FC} from 'react'
 import cn from 'classnames'
-import type {SanityImageSource} from '@sanity/image-url/lib/types/types'
-import type {CallToAction} from '@/types/CallToAction'
 import urlFor from '@/lib/urlFor'
 import {ButtonStyle} from '@/components/Button'
 import CallToActionButton from '@/app/_components/CallToActionButton'
 import Container from '@/components/Container'
+import type {Banner as BannerProps} from '@/app/_components/HomePage/getData'
 
 interface Props {
-  title?: string | null
-  description?: string | null
-  image?: SanityImageSource | null
-  cta: CallToAction
+  banner: BannerProps
 }
 
-const HeroBanner: FC<Props> = ({
-  title = undefined,
-  description = undefined,
-  image = undefined,
-  cta,
-}) => {
+const Banner: FC<Props> = ({banner}) => {
+  const {title, description, image, cta, overlay} = banner
   const bgStyles = image
     ? {
         backgroundImage: `url('${urlFor(image).width(1240).url()}')`,
@@ -29,10 +21,10 @@ const HeroBanner: FC<Props> = ({
   return (
     <header
       className={cn(
+        ['w-full', 'relative', 'bg-cover', 'bg-fixed', 'bg-center'],
         ['py-8', 'sm:py-12'],
-        ['min-h-[calc(100vh-theme(height.header))]', 'sm:min-h-[500px]'],
-        ['flex', 'items-center', 'sm:block'],
-        ['bg-cover', 'bg-fixed', 'bg-center']
+        ['h-[calc(100vh-theme(height.header))]', 'sm:h-[500px]'],
+        ['flex', 'items-center', 'sm:block']
       )}
       style={bgStyles}
     >
@@ -45,7 +37,9 @@ const HeroBanner: FC<Props> = ({
             'bg-white/90',
             'text-base-color',
             'rounded',
-            'drop-shadow-lg'
+            'drop-shadow-lg',
+            'relative',
+            'z-10'
           )}
         >
           {title && (
@@ -54,11 +48,14 @@ const HeroBanner: FC<Props> = ({
             </h1>
           )}
           {description && <p className="mb-4 mt-3 sm:text-lg">{description}</p>}
-          <CallToActionButton cta={cta} buttonStyle={ButtonStyle.Primary} />
+          {cta && <CallToActionButton cta={cta} buttonStyle={ButtonStyle.Primary} />}
         </article>
       </Container>
+      {overlay && (
+        <div className="bg-black absolute inset-0" style={{opacity: overlay * 0.01}}></div>
+      )}
     </header>
   )
 }
 
-export default HeroBanner
+export default Banner

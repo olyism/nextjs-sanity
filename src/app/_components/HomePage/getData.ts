@@ -3,14 +3,18 @@ import client from '@/lib/client'
 import CallToAction from '@/types/CallToAction'
 import ContentBlock from '@/types/ContentBlock'
 
+export type Banner = {
+  _id: string
+  title?: string | null
+  description?: string | null
+  image?: SanityImageSource | null
+  cta: CallToAction
+  overlay?: number | null
+}
+
 export type HomepageSettings = {
   title: string | null
-  hero: {
-    title?: string | null
-    description?: string | null
-    image?: SanityImageSource | null
-    cta: CallToAction
-  }
+  hero: Banner[] | null
   contentBlocks: ContentBlock[]
 }
 
@@ -18,16 +22,7 @@ const getData = async (): Promise<HomepageSettings> => {
   const data = await client.fetch(`
     *[_id == 'homepageSettings']{
       title,
-      "hero": coalesce(hero{
-        title,
-        description,
-        image,
-        "cta": coalesce(cta{
-          buttonLabel,
-          jumpToContactForm,
-          "goTo": goTo->slug
-        }, {}),
-      }, {}),
+      hero,
       contentBlocks[]->{
         _id,
         name,
