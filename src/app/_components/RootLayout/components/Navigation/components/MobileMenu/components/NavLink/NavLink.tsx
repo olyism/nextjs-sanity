@@ -1,27 +1,30 @@
 import type {FC} from 'react'
 import Link from 'next/link'
 import cn from 'classnames'
-import {NavType} from '@/app/_components/RootLayout/getData'
+import {NavType, type NavItemProps} from '@/app/_components/RootLayout/getData'
+import getNavHref from '@/lib/getNavHref'
 
 interface Props {
-  name: string
-  href: string
+  navItem: NavItemProps
   currentPath?: string | null
-  navType?: NavType
 }
 
-const NavLink: FC<Props> = ({name, href, currentPath = undefined, navType = undefined}) => {
+export const navLinkClassNames = [
+  'px-2',
+  'py-3',
+  'text-white',
+  'font-display',
+  'font-semibold',
+  'rounded',
+  'block',
+]
+
+const NavLink: FC<Props> = ({navItem, currentPath = undefined}) => {
+  const {_type, name, slug} = navItem
+  const href = getNavHref(slug, _type)
+
   const classNames = cn(
-    [
-      'px-2',
-      'py-3',
-      'text-white',
-      'text-center',
-      'font-display',
-      'font-semibold',
-      'rounded',
-      'block',
-    ],
+    navLinkClassNames,
     currentPath === href
       ? [
           'cursor-default',
@@ -34,7 +37,7 @@ const NavLink: FC<Props> = ({name, href, currentPath = undefined, navType = unde
       : 'hover:bg-slate-700'
   )
 
-  return navType === NavType.ContentBlock ? (
+  return _type === NavType.ContentBlock ? (
     <a className={classNames} href={href}>
       {name}
     </a>

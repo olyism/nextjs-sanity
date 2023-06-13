@@ -35,9 +35,9 @@ const HeaderLinks: FC<Props> = ({nav, cta, currentPath = undefined}) => {
           />
         </li>
         {nav.map((navItem: NavItemProps | ParentNavItemProps) => {
-          const {_type} = navItem
+          const {_id, _type} = navItem
           return (
-            <li key={navItem._id}>
+            <li key={_id}>
               {_type === NavType.ParentNav ? (
                 <ParentNav navItem={navItem} currentPath={currentPath} />
               ) : (
