@@ -5,13 +5,22 @@ import client from '@/lib/client'
 export enum NavType {
   Page = 'page',
   ContentBlock = 'contentBlock',
+  ParentNav = 'parentNav',
+  Static = 'static',
 }
 
 export type NavItemProps = {
   _id: string
-  _type: NavType
+  _type: NavType.Page | NavType.ContentBlock | NavType.Static
   name: string
   slug: SanitySlug
+}
+
+export type ParentNavItemProps = {
+  _id: string
+  _type: NavType.ParentNav
+  name: string | null
+  nav: NavItemProps[] | null
 }
 
 export type LogoProps = {
@@ -37,7 +46,7 @@ export type Settings = {
   description: string | null
   logo: LogoProps
   styles: StylesProps
-  nav: NavItemProps[]
+  nav: (NavItemProps | ParentNavItemProps)[] | null
   cta: CallToAction
   tel: string | null
   email: string | null
@@ -60,8 +69,24 @@ const getData = async (): Promise<Settings> => {
         systemFont,
         headingFont,
       }, {}),
-      nav[]->{
-        _id, _type, name, slug
+      nav[]{
+        _type == "reference" => @-> {
+          _id,
+          _type,
+          name,
+          slug,
+        },
+        _type != "reference" => {
+          _type,
+          name,
+          "_id": _key,
+          nav[]->{
+            _id,
+            _type,
+            name,
+            slug,
+          },
+        },
       },
       "cta": coalesce(cta{
         buttonLabel,
