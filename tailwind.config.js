@@ -30,6 +30,9 @@ module.exports = {
       minHeight: {
         header: headerHeight,
       },
+      top: {
+        header: headerHeight,
+      },
       transitionProperty: {
         left: 'left',
       },

@@ -51,7 +51,7 @@ const RootLayout = async ({children}: {children: ReactNode}) => {
         />
         <Phone tel={tel} />
         <div className="mx-auto max-w-screen-2xl min-h-screen flex flex-col bg-white drop-shadow-2xl relative">
-          <Navigation logo={logo} nav={nav} cta={cta} tel={tel} />
+          {nav?.length && <Navigation logo={logo} nav={nav} cta={cta} tel={tel} />}
           <main className="grow">{children}</main>
           <Bottom email={email} tel={tel} footerImage={footerImage} />
         </div>

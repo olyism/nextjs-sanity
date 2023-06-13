@@ -1,27 +1,31 @@
 import type {FC} from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
-import {NavType} from '@/app/_components/RootLayout/getData'
+import {NavType, type NavItemProps} from '@/app/_components/RootLayout/getData'
+import getNavHref from '@/lib/getNavHref'
 
 interface Props {
-  name: string | null
-  href: string
+  navItem: NavItemProps
   currentPath?: string | null
-  navType?: NavType
 }
 
-const NavLink: FC<Props> = ({name, href, currentPath = undefined, navType = undefined}) => {
+export const navLinkClassNames = [
+  'px-4',
+  'py-3',
+  'text-[14px]',
+  'text-template',
+  'rounded',
+  'leading-tight',
+  'block',
+]
+
+const NavLink: FC<Props> = ({navItem, currentPath = undefined}) => {
+  const {name, _type, slug} = navItem
+
+  const href = getNavHref(slug, _type)
+
   const classNames = cn(
-    [
-      'px-4',
-      'py-3',
-      'text-[14px]',
-      'text-template',
-      'rounded',
-      'text-center',
-      'leading-tight',
-      'block',
-    ],
+    navLinkClassNames,
     currentPath === href
       ? [
           'cursor-default',
@@ -34,7 +38,7 @@ const NavLink: FC<Props> = ({name, href, currentPath = undefined, navType = unde
       : ['hover:bg-gray-50', 'hover:text-gray-800']
   )
 
-  return navType === NavType.ContentBlock ? (
+  return _type === NavType.ContentBlock ? (
     <a className={classNames} href={href}>
       {name}
     </a>

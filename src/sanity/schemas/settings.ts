@@ -81,6 +81,28 @@ const settings = {
           type: 'reference',
           to: [{type: 'page'}, {type: 'contentBlock'}],
         },
+        {
+          name: 'parentNav',
+          title: 'Parent navigation',
+          type: 'object',
+          fields: [
+            {
+              name: 'name',
+              type: 'string',
+            },
+            {
+              name: 'nav',
+              title: 'Navigation',
+              type: 'array',
+              of: [
+                {
+                  type: 'reference',
+                  to: [{type: 'page'}, {type: 'contentBlock'}],
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
     {

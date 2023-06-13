@@ -1,46 +1,57 @@
 import {FC} from 'react'
 import type CallToAction from '@/types/CallToAction'
-import type {NavItemProps} from '@/app/_components/RootLayout/getData'
-import getNavHref from '@/lib/getNavHref'
+import {
+  NavType,
+  type NavItemProps,
+  type ParentNavItemProps,
+} from '@/app/_components/RootLayout/getData'
 import {ButtonStyle} from '@/components/Button'
-import NavLink from './components/NavLink'
 import CallToActionButton from '@/app/_components/CallToActionButton'
+import NavLink from './components/NavLink'
+import ParentNav from './components/ParentNav'
 
 interface Props {
-  nav: NavItemProps[]
+  nav: (NavItemProps | ParentNavItemProps)[]
   cta: CallToAction
   currentPath?: string | null
 }
 
-const HeaderLinks: FC<Props> = ({nav, cta, currentPath = undefined}) => (
-  <nav className="hidden lg:block">
-    <ul className="flex gap-1 items-center">
-      <li>
-        <NavLink name="Home" href="/" currentPath={currentPath} />
-      </li>
-      {nav &&
-        nav.map((navItem: NavItemProps) => {
-          const {_id, _type, name, slug} = navItem
-
+const HeaderLinks: FC<Props> = ({nav, cta, currentPath = undefined}) => {
+  return (
+    <nav className="hidden lg:block">
+      <ul className="flex gap-1 items-center">
+        <li>
+          <NavLink
+            navItem={{
+              _id: 'home',
+              _type: NavType.Static,
+              name: 'Home',
+              slug: {
+                _type: 'slug',
+                current: '/',
+              },
+            }}
+            currentPath={currentPath}
+          />
+        </li>
+        {nav.map((navItem: NavItemProps | ParentNavItemProps) => {
+          const {_id, _type} = navItem
           return (
-            slug &&
-            name && (
-              <li key={_id}>
-                <NavLink
-                  name={name}
-                  href={getNavHref(slug, _type)}
-                  navType={_type}
-                  currentPath={currentPath}
-                />
-              </li>
-            )
+            <li key={_id}>
+              {_type === NavType.ParentNav ? (
+                <ParentNav navItem={navItem} currentPath={currentPath} />
+              ) : (
+                <NavLink navItem={navItem} currentPath={currentPath} />
+              )}
+            </li>
           )
         })}
-      <li className="ml-3">
-        <CallToActionButton buttonStyle={ButtonStyle.Primary} cta={cta} />
-      </li>
-    </ul>
-  </nav>
-)
+        <li className="ml-3">
+          <CallToActionButton buttonStyle={ButtonStyle.Primary} cta={cta} />
+        </li>
+      </ul>
+    </nav>
+  )
+}
 
 export default HeaderLinks
