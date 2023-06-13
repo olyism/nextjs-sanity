@@ -8,7 +8,7 @@ import NavLink from './components/NavLink'
 import ParentNav from './components/ParentNav'
 
 interface Props {
-  nav: NavItemProps[] | ParentNavItemProps[]
+  nav: (NavItemProps | ParentNavItemProps)[]
   cta: CallToAction
   currentPath?: string | null
 }

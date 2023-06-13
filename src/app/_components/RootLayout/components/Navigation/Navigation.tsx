@@ -6,7 +6,11 @@ import {usePathname} from 'next/navigation'
 import {HiBars2, HiXMark, HiPhone} from 'react-icons/hi2'
 import cn from 'classnames'
 import type CallToAction from '@/types/CallToAction'
-import type {NavItemProps, LogoProps} from '@/app/_components/RootLayout/getData'
+import type {
+  LogoProps,
+  NavItemProps,
+  ParentNavItemProps,
+} from '@/app/_components/RootLayout/getData'
 import Container from '@/components/Container'
 import HeaderLinks from './components/HeaderLinks'
 import Logo from './components/Logo'
@@ -14,7 +18,7 @@ import MobileMenu from './components/MobileMenu'
 
 interface Props {
   logo: LogoProps
-  nav: NavItemProps[]
+  nav: (NavItemProps | ParentNavItemProps)[]
   cta: CallToAction
   tel: string | null
 }
