@@ -42,15 +42,15 @@ const RootLayout = async ({children}: {children: ReactNode}) => {
 
   return (
     <html className="scroll-smooth" lang="en">
-      <body className="bg-gray-100 font-system">
+      <body className="bg-purple-100 font-system">
         <Styles
           primaryColor={primaryColor}
           brandColor={brandColor}
           systemFont={systemFont}
           headingFont={headingFont}
         />
-        <Phone tel={tel} />
         <div className="mx-auto max-w-screen-2xl min-h-screen flex flex-col bg-white drop-shadow-2xl relative">
+          <Phone tel={tel} />
           {nav?.length && <Navigation logo={logo} nav={nav} cta={cta} tel={tel} />}
           <main className="grow">{children}</main>
           <Bottom email={email} tel={tel} footerImage={footerImage} />

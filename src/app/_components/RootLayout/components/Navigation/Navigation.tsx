@@ -37,7 +37,7 @@ const Navigation: FC<Props> = ({logo: {src, width, height}, nav, cta, tel}) => {
         className={cn('bg-white', 'z-30', 'drop-shadow-sm', !isMobileMenuShown && 'min-h-header')}
       >
         <Container>
-          <div className="flex justify-between items-center py-2 gap-4">
+          <div className="flex justify-between items-center py-4 gap-4">
             <Link href="/">
               <Logo src={src} width={width} height={height} />
             </Link>
