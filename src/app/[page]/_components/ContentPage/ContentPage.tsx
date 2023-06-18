@@ -16,13 +16,13 @@ const ContentPage = async ({params}: Props) => {
   return (
     <article>
       {heading && (
-        <header className="mb-8 pb-8 pt-24 bg-[var(--brand-color)]">
+        <header className="pb-8 pt-24 bg-[var(--brand-color)]">
           <Container>
             <h1 className="font-display font-bold text-5xl text-white">{heading}</h1>
           </Container>
         </header>
       )}
-      <Container>{content && <BlockContent value={content} />}</Container>
+      <Container className="my-8 sm:my-12">{content && <BlockContent value={content} />}</Container>
     </article>
   )
 }
