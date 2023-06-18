@@ -20,7 +20,7 @@ const Container: FC<Props> = ({
   <div
     className={cn(
       ['mx-auto', 'px-4'],
-      maxWidth === ContainerWidth.Prose ? 'max-w-prose' : 'max-w-4xl',
+      maxWidth === ContainerWidth.Prose ? 'max-w-prose' : 'max-w-screen-lg',
       className
     )}
   >
