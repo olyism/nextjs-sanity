@@ -22,13 +22,13 @@ const Banner: FC<Props> = ({banner}) => {
     <header
       className={cn(
         ['w-full', 'relative', 'bg-cover', 'bg-fixed', 'bg-center'],
+        ['h-[calc(100vh-theme(height.header))]', 'max-h-[864px]'],
         ['py-8', 'sm:py-12'],
-        ['h-[calc(100vh-theme(height.header))]', 'sm:h-[500px]'],
-        ['flex', 'items-center', 'sm:block']
+        ['flex', 'items-center']
       )}
       style={bgStyles}
     >
-      <Container className="w-full">
+      <Container className="w-full my-8">
         <article
           className={cn(
             'p-6',

@@ -2,7 +2,7 @@
 
 const colors = require('tailwindcss/colors')
 
-const headerHeight = '58px'
+const headerHeight = '72px'
 
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
