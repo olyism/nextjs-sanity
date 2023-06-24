@@ -3,7 +3,9 @@ import cn from 'classnames'
 
 export enum ContainerWidth {
   Default = 'Default',
+  Fluid = 'Fluid',
   Prose = 'Prose',
+  Wide = 'Wide',
 }
 
 interface Props {
@@ -20,7 +22,9 @@ const Container: FC<Props> = ({
   <div
     className={cn(
       ['mx-auto', 'px-4'],
-      maxWidth === ContainerWidth.Prose ? 'max-w-prose' : 'max-w-4xl',
+      maxWidth === ContainerWidth.Prose && 'max-w-prose',
+      maxWidth === ContainerWidth.Wide && 'max-w-screen-xl',
+      maxWidth === ContainerWidth.Default && 'max-w-screen-lg',
       className
     )}
   >

@@ -25,6 +25,7 @@ const getData = async (): Promise<HomepageSettings> => {
       hero,
       contentBlocks[]->{
         _id,
+        _type,
         name,
         content,
         "slug": slug.current,

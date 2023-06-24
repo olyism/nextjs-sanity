@@ -11,7 +11,7 @@ import type {
   NavItemProps,
   ParentNavItemProps,
 } from '@/app/_components/RootLayout/getData'
-import Container from '@/components/Container'
+import Container, {ContainerWidth} from '@/components/Container'
 import HeaderLinks from './components/HeaderLinks'
 import Logo from './components/Logo'
 import MobileMenu from './components/MobileMenu'
@@ -36,8 +36,8 @@ const Navigation: FC<Props> = ({logo: {src, width, height}, nav, cta, tel}) => {
       <header
         className={cn('bg-white', 'z-30', 'drop-shadow-sm', !isMobileMenuShown && 'min-h-header')}
       >
-        <Container>
-          <div className="flex justify-between items-center py-2 gap-4">
+        <Container maxWidth={ContainerWidth.Wide}>
+          <div className="flex justify-between items-center py-4 gap-4">
             <Link href="/">
               <Logo src={src} width={width} height={height} />
             </Link>

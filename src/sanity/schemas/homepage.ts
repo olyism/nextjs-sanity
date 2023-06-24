@@ -47,7 +47,7 @@ const homepage = {
                 {
                   name: 'goTo',
                   type: 'reference',
-                  to: [{type: 'page'}, {type: 'contentBlock'}],
+                  to: [{type: 'page'}, {type: 'contentBlock'}, {type: 'bannerBlock'}],
                   // @ts-ignore
                   hidden: ({document}) => document?.hero?.cta?.jumpToContactForm,
                 },
@@ -68,12 +68,12 @@ const homepage = {
     },
     {
       name: 'contentBlocks',
-      title: 'Content Blocks',
+      title: 'Blocks',
       type: 'array',
       of: [
         {
           type: 'reference',
-          to: [{type: 'contentBlock'}],
+          to: [{type: 'contentBlock'}, {type: 'bannerBlock'}],
         },
       ],
     },
