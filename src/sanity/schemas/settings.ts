@@ -97,7 +97,7 @@ const settings = {
               of: [
                 {
                   type: 'reference',
-                  to: [{type: 'page'}, {type: 'contentBlock'}],
+                  to: [{type: 'page'}, {type: 'contentBlock'}, {type: 'bannerBlock'}],
                 },
               ],
             },

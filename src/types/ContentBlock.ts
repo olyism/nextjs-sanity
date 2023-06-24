@@ -1,4 +1,9 @@
-import type {PortableTextBlock, ArbitraryTypedObject} from '@portabletext/types'
+import Value from './Value'
+
+export enum BlockType {
+  Banner = 'bannerBlock',
+  Content = 'contentBlock',
+}
 
 export enum FeaturedImagePos {
   Top = 'Top',
@@ -24,14 +29,13 @@ export type FeaturedImage = {
   pos: FeaturedImagePos | null
 } | null
 
-type Value = PortableTextBlock | ArbitraryTypedObject
-
-type ContentBlock = {
+type ContentBlockBase = {
   _id: string | null
+  _type: BlockType
   name: string | null
   content: Value | Value[] | null
   slug: string | null
   featuredImage: FeaturedImage
 }
 
-export default ContentBlock
+export default ContentBlockBase

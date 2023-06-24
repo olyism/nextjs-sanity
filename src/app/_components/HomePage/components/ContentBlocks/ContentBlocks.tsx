@@ -1,6 +1,6 @@
 import type {FC} from 'react'
-import type ContentBlockProps from '@/types/ContentBlock'
-import Container from '@/components/Container'
+import ContentBlockProps, {BlockType} from '@/types/ContentBlock'
+import BannerBlock from './components/BannerBlock'
 import ContentBlock from './components/ContentBlock'
 
 interface Props {
@@ -10,26 +10,28 @@ interface Props {
 const ContentBlocks: FC<Props> = ({contentBlocks}) =>
   contentBlocks ? (
     <section className="py-12">
-      <Container>
-        <ul>
-          {contentBlocks.map((contentBlock) => {
-            if (!contentBlock) return null
+      <ul>
+        {contentBlocks.map((contentBlock) => {
+          if (!contentBlock) return null
 
-            const {_id, name, content, slug, featuredImage} = contentBlock
+          const {_id, _type, name, content, slug, featuredImage} = contentBlock
 
-            return (
-              <li
-                aria-label={`Content for ${name}`}
-                className="mb-10"
-                id={slug ?? '' + Math.random()}
-                key={_id}
-              >
+          return (
+            <li
+              aria-label={`Content for ${name}`}
+              className="mb-10"
+              id={slug ?? '' + Math.random()}
+              key={_id}
+            >
+              {_type === BlockType.Banner ? (
+                <BannerBlock name={name} content={content} featuredImage={featuredImage} />
+              ) : (
                 <ContentBlock content={content} featuredImage={featuredImage} />
-              </li>
-            )
-          })}
-        </ul>
-      </Container>
+              )}
+            </li>
+          )
+        })}
+      </ul>
     </section>
   ) : null
 
