@@ -22,7 +22,7 @@ const Banner: FC<Props> = ({banner}) => {
     <header
       className={cn(
         ['w-full', 'relative', 'bg-cover', 'bg-fixed', 'bg-center'],
-        ['h-[calc(100vh-theme(height.header))]', 'max-h-[864px]'],
+        ['h-[calc(100vh-theme(height.header))]', 'max-h-[664px]'],
         ['py-8', 'sm:py-12'],
         ['flex', 'items-center']
       )}

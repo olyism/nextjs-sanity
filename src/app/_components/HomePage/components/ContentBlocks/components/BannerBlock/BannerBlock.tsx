@@ -15,12 +15,14 @@ interface Props {
 const BannerBlock: FC<Props> = ({name, content, featuredImage}) => (
   <section
     className={cn(
-      ['bg-[var(--brand-color)]', 'bg-cover'],
-      ['h-[calc(100vh-theme(height.header))]', 'max-h-[864px]', 'py-8']
+      ['bg-[var(--brand-color)]', 'bg-cover', 'bg-fixed'],
+      ['h-[calc(100vh-theme(height.header))]', 'max-h-[664px]'],
+      ['py-8', 'sm:py-12'],
+      ['flex', 'items-center']
     )}
     style={{backgroundImage: `url('${featuredImage?.src}')`}}
   >
-    <Container>
+    <Container className="w-full my-8">
       <article
         className={cn(
           'p-6',
@@ -44,7 +46,9 @@ const BannerBlock: FC<Props> = ({name, content, featuredImage}) => (
         >
           {name}
         </h2>
-        {content && <PortableText value={content} />}
+        <div className="prose">
+          {content && <PortableText value={content} />}
+        </div>
       </article>
     </Container>
   </section>
