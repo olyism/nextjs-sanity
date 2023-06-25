@@ -16,6 +16,8 @@ export async function generateMetadata() {
   }
 }
 
+export const revalidate = 60
+
 const RootLayout = async ({children}: {children: ReactNode}) => {
   const settingsData = await data
 

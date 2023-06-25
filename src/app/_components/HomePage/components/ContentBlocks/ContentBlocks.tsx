@@ -9,7 +9,7 @@ interface Props {
 
 const ContentBlocks: FC<Props> = ({contentBlocks}) =>
   contentBlocks ? (
-    <section className="py-12">
+    <section>
       <ul>
         {contentBlocks.map((contentBlock) => {
           if (!contentBlock) return null
@@ -19,7 +19,7 @@ const ContentBlocks: FC<Props> = ({contentBlocks}) =>
           return (
             <li
               aria-label={`Content for ${name}`}
-              className="mb-10"
+              className="my-16"
               id={slug ?? '' + Math.random()}
               key={_id}
             >
