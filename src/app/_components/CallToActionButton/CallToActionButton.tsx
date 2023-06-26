@@ -17,7 +17,7 @@ const CallToActionButton: FC<Props> = ({
 
   const to = jumpToContactForm ? '/#contact' : goTo?.current ?? ''
 
-  return (
+  return buttonLabel ? (
     <Button
       href={to}
       buttonDisplay={buttonDisplay}
@@ -27,7 +27,7 @@ const CallToActionButton: FC<Props> = ({
     >
       {buttonLabel}
     </Button>
-  )
+  ) : null
 }
 
 export default CallToActionButton
