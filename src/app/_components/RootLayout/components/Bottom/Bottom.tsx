@@ -23,7 +23,11 @@ const Bottom: FC<Props> = ({email, tel, footerImage}) => {
     <div className="bg-[var(--brand-color)] relative">
       <ContactForm email={email} tel={tel} />
       <Footer />
-      <div aria-hidden className="bg-center bg-cover bg-fixed absolute inset-0" style={bgStyles} />
+      <div
+        aria-hidden
+        className="bg-center bg-cover md:bg-fixed absolute inset-0"
+        style={bgStyles}
+      />
     </div>
   )
 }
