@@ -15,7 +15,7 @@ interface Props {
 const BannerBlock: FC<Props> = ({name, content, featuredImage}) => (
   <section
     className={cn(
-      ['bg-[var(--brand-color)]', 'bg-cover', 'bg-fixed'],
+      ['bg-[var(--brand-color)]', 'bg-cover', 'md:bg-fixed'],
       ['h-[calc(100vh-theme(height.header))]', 'max-h-[664px]'],
       ['py-8', 'sm:py-12'],
       ['flex', 'items-center']
